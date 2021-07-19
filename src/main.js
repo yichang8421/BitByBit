@@ -4,8 +4,10 @@ import "./registerServiceWorker";
 import router from "./router";
 import store from "./store";
 import Nav from "@/components/Nav.vue";
+import Layout from "@/components/Layout.vue";
 Vue.config.productionTip = false;
 // 全局引入Nav标签
+Vue.component("Layout", Layout);
 Vue.component("Nav", Nav);
 new Vue({
     router: router,

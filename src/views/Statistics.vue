@@ -1,18 +1,14 @@
 <template>
     <div>
-        Statistic.vue
-        <Nav></Nav>
+        <Layout>
+            <p>Statistics.vue</p>
+        </Layout>
     </div>
 </template>
 
 <script lang="ts">
-    import Nav from "@/components/Nav.vue";
     export default {
         name: "Statistics",
-        components: {Nav}
-    }
+
+    };
 </script>
-
-<style lang="scss" scoped>
-
-</style>
