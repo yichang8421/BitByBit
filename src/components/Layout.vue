@@ -16,13 +16,11 @@
 <style lang="scss" scoped>
     .nav-wrapper {
         height: 100vh;
-        border: 1px solid green;
         display: flex;
         flex-direction: column;
     }
 
     .content {
-        border: solid blue 1px;
         overflow: auto;
         flex-grow: 1;
     }
