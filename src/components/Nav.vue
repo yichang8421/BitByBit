@@ -28,13 +28,13 @@
     @import "~@/assets/style/helper.scss";
 
     nav {
+        @extend %outerShadow;
         display: flex;
-        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
         flex-direction: row;
         font-size: 12px;
 
         > .item {
-            padding: 2px 0;
+            padding: 6px 0;
             width: 33.33%;
             display: flex;
             justify-content: center;
@@ -49,7 +49,7 @@
 
         > .item.selected {
             color: $color-highlight;
-            box-shadow: 3px -1px $color-highlight, -3px 0 .4em $color-highlight;
+            box-shadow:inset 0 0 5px rgba(0,0,0,0.15);
         }
     }
 
