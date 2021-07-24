@@ -2,36 +2,66 @@
     <div>
         <ul class="types">
             <li :class="type==='-' ? 'selected' : '' "
-            @click="selectType('-')">支出</li>
+                @click="selectType('-')">支出
+            </li>
             <li :class="type==='+'&& 'selected'"
-            @click="selectType('+')">收入</li>
+                @click="selectType('+')">收入
+            </li>
         </ul>
     </div>
 </template>
 
-<script>
-    export default {
-        name: "Types",
-        props:['outside'],
-        data() {
-            return {
-                type: '-'  // 减号表示支出，加号表示收入
+<script lang="ts">
+    import Vue from "vue";
+    import {Component} from "vue-property-decorator";
 
-            }
-        },
-        mounted(){
-            console.log(this.outside);
-        },
-        methods: {
-            selectType(type) {    // type 只能是‘-’ 或 ‘+’
-                if (type !== '-' && type !== '+') {
-                    throw new Error('type is unknow.')
-                }
-                this.type = type;
+    const GreetingProps = Vue.extend({
+        props: {
+            name: String
+        }
+    })
 
-            }
+    @Component
+    export default class Greeting extends GreetingProps {
+        get message(): string {
+            // this.name will be typed
+            return 'Hello, ' + this.name
         }
     }
+
+    @Component
+    export default class Types extends Vue {
+        type = "-";  //  data减号表示支出，加号表示收入
+        selectType(type: string) {    // type 只能是‘-’ 或 ‘+’
+            if (type !== "-" && type !== "+") {
+                throw new Error("type is unknow.");
+            }
+            this.type = type;
+        }
+    }
+
+    // export default {
+    //     name: "Types",
+    //     props:['outside'],
+    //     data() {
+    //         return {
+    //             type: '-'  // 减号表示支出，加号表示收入
+    //
+    //         }
+    //     },
+    //     mounted(){
+    //         console.log(this.outside);
+    //     },
+    //     methods: {
+    //         selectType(type) {    // type 只能是‘-’ 或 ‘+’
+    //             if (type !== '-' && type !== '+') {
+    //                 throw new Error('type is unknow.')
+    //             }
+    //             this.type = type;
+    //
+    //         }
+    //     }
+    // }
 </script>
 
 <style lang="scss" scoped>
