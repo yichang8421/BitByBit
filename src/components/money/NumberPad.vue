@@ -1,38 +1,96 @@
 <template>
     <div class="numberPad">
-        <div class="output">100</div>
+        <div class="output">{{output || '&nbsp;'}}</div>
         <div class="button">
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>+</button>
-            <button>删除</button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button>-</button>
-            <button>清空</button>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button>×</button>
-            <button class="ok">OK</button>
-            <button>.</button>
-            <button>0</button>
-            <button>%</button>
-            <button>÷</button>
+            <button @click="inputContent">1</button>
+            <button @click="inputContent">2</button>
+            <button @click="inputContent">3</button>
+            <button @click="add">+</button>
+            <button @click="remove">删除</button>
+            <button @click="inputContent">4</button>
+            <button @click="inputContent">5</button>
+            <button @click="inputContent">6</button>
+            <button @click="minus">-</button>
+            <button @click="clear">清空</button>
+            <button @click="inputContent">7</button>
+            <button @click="inputContent">8</button>
+            <button @click="inputContent">9</button>
+            <button @click="multiply">×</button>
+            <button @click="ok" class="ok">OK</button>
+            <button @click="percent">%</button>
+            <button @click="inputContent">0</button>
+            <button @click="inputContent">.</button>
+            <button @click="division">÷</button>
         </div>
     </div>
 </template>
 
 <script lang="ts">
-    export default {
-        name: "NumberPad"
-    };
+    import Vue from "vue";
+    import {Component} from "vue-property-decorator";
+
+    @Component
+    export default class NumberPad extends Vue {
+        output = "0";
+
+        inputContent(event: MouseEvent) {
+            const button = (event.target as HTMLButtonElement);
+            const input = button.textContent!;
+
+            if (this.output.length === 16) {
+                return;
+            }
+
+            if (input != ".") {
+                if (this.output === "0") {
+                    this.output = input;
+                } else {
+                    this.output += input;
+                }
+            }
+
+            if (input === "." && this.output.indexOf(".") === -1) {
+                this.output += input;
+            }
+        }
+
+        clear() {
+            this.output = "0";
+        }
+
+        remove() {
+            this.output = this.output.slice(0, -1) || "0";
+        }
+
+        ok() {
+            return;
+        }
+
+        add() {
+            return;
+        }
+
+        minus() {
+            return;
+        }
+
+        multiply() {
+            return;
+        }
+
+        division() {
+            return;
+        }
+
+        percent() {
+            return;
+        }
+    }
 </script>
 
 <style lang="scss" scoped>
     @import "~@/assets/style/helper.scss";
+
     .numberPad {
         > .output {
             @extend %clearFix;
