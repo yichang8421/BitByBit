@@ -13,30 +13,27 @@
 
 <script lang="ts">
     import Vue from "vue";
-    import {Component} from "vue-property-decorator";
-
-    const GreetingProps = Vue.extend({
-        props: {
-            name: String
-        }
-    })
-
-    @Component
-    export default class Greeting extends GreetingProps {
-        get message(): string {
-            // this.name will be typed
-            return 'Hello, ' + this.name
-        }
-    }
+    import {Component, Prop} from "vue-property-decorator";
 
     @Component
     export default class Types extends Vue {
+        @Prop(Number) propA: number | undefined;
+        //其中 Number 是运行时类型。告诉Vue：propA 的类型是 Number
+        // number | underfined 是编译时类型。告诉 TS，propA的类型
+
+
         type = "-";  //  data减号表示支出，加号表示收入
         selectType(type: string) {    // type 只能是‘-’ 或 ‘+’
             if (type !== "-" && type !== "+") {
                 throw new Error("type is unknow.");
             }
             this.type = type;
+        }
+
+        mounted() {
+            if (this.propA) {
+                console.log(this.propA.toString());
+            }
         }
     }
 

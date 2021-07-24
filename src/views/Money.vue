@@ -3,7 +3,7 @@
         <NumberPad/>
         <Tags/>
         <Notes/>
-        <Types outside="hello"/>
+        <Types :prop-a="1235"/>
     </Layout>
 </template>
 
