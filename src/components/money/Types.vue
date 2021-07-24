@@ -1,15 +1,36 @@
 <template>
     <div>
         <ul class="types">
-            <li class="selected">支出</li>
-            <li>收入</li>
+            <li :class="type==='-' ? 'selected' : '' "
+            @click="selectType('-')">支出</li>
+            <li :class="type==='+'&& 'selected'"
+            @click="selectType('+')">收入</li>
         </ul>
     </div>
 </template>
 
-<script lang="ts">
+<script>
     export default {
-        name: "Types"
+        name: "Types",
+        props:['outside'],
+        data() {
+            return {
+                type: '-'  // 减号表示支出，加号表示收入
+
+            }
+        },
+        mounted(){
+            console.log(this.outside);
+        },
+        methods: {
+            selectType(type) {    // type 只能是‘-’ 或 ‘+’
+                if (type !== '-' && type !== '+') {
+                    throw new Error('type is unknow.')
+                }
+                this.type = type;
+
+            }
+        }
     }
 </script>
 
