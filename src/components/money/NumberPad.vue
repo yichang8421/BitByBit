@@ -21,6 +21,7 @@
             <button @click="inputContent">0</button>
             <button @click="inputContent">.</button>
             <button @click="division">÷</button>
+            <button @click="equal">=</button>
         </div>
     </div>
 </template>
@@ -82,8 +83,12 @@
             return;
         }
 
-        percent() {
+        equal() {
             return;
+        }
+
+        percent() {
+            this.output = (parseFloat(this.output) / 100).toString();
         }
     }
 </script>
@@ -112,10 +117,10 @@
                 background: transparent;
                 border: none;
 
-                &.ok {
-                    height: 64px*2;
-                    float: right;
-                }
+                //&.ok {
+                //    height: 64px*2;
+                //    float: right;
+                //}
 
                 $bg: #f2f2f2;
 
@@ -143,12 +148,12 @@
                     background: darken($bg, 4%*5);
                 }
 
-                &:nth-child(15) {
-                    background: darken($bg, 4%*7);
+                &:nth-child(15), &:nth-child(19) {
+                    background: darken($bg, 4%*6);
                 }
 
-                &:nth-child(19) {
-                    background: darken($bg, 4%*6);
+                &:nth-child(20) {
+                    background: darken($bg, 4%*7);
                 }
             }
         }
