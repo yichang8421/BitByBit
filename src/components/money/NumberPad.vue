@@ -28,11 +28,12 @@
 
 <script lang="ts">
     import Vue from "vue";
-    import {Component} from "vue-property-decorator";
+    import {Component, Prop} from "vue-property-decorator";
 
     @Component
     export default class NumberPad extends Vue {
-        output = "0";
+        @Prop(Number) readonly value: number;
+        output = this.value.toString();
 
         inputContent(event: MouseEvent) {
             const button = (event.target as HTMLButtonElement);
@@ -64,7 +65,11 @@
         }
 
         ok() {
-            return;
+            //修改record.amount
+            this.$emit("update:value",parseFloat(this.output));
+            //提交record
+            this.$emit("submit", this.output);
+            this.output = "0";
         }
 
         add() {
