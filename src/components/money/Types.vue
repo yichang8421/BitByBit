@@ -35,7 +35,7 @@
         display: flex;
         text-align: center;
         font-size: 24px;
-        border: 1px solid red;
+        /*border: 1px solid red;*/
 
 
         > li {

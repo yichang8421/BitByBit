@@ -17,6 +17,9 @@
     import Types from "@/components/money/Types.vue";
     import Vue from "vue";
     import {Component, Watch} from "vue-property-decorator";
+    // import model from "@/model"
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const model = require("@/model").model;
 
     type Record = {
         type: string,
@@ -26,7 +29,7 @@
         createdAt?: Date
     }
 
-    const recordList: Record[] = JSON.parse(window.localStorage.getItem("recordList") || "[]");
+    const recordList: Record[] = model.fetch()
 
     @Component({
         components: {Types, Notes, Tags, NumberPad}
@@ -65,7 +68,7 @@
 
 <style lang="scss">
     .layout-content {
-        border: 1px solid red;
+        /*border: 1px solid red;*/
         display: flex;
         flex-direction: column-reverse;
 
