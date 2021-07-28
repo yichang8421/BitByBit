@@ -2,7 +2,7 @@
     <Layout class-prefix="layout">
         <NumberPad/>
         <Tags :data-source="tags"/>
-        <Notes/>
+        <Notes @update:value="onUpdateNotes"/>
         <Types :value.sync="record.type"/>
     </Layout>
 </template>
@@ -34,6 +34,11 @@
             notes:'',
             tags:[],
             amount:0
+        }
+
+        onUpdateNotes(value:string){
+            this.record.notes = value;
+            console.log(this.record);
         }
     }
 </script>

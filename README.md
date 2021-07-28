@@ -1,4 +1,4 @@
-# morney
+## BitByBit
 
 ## Project setup
 ```
