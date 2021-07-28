@@ -48,14 +48,14 @@
 
         saveRecord() {
             // eslint-disable-next-line no-undef
-            const newRecord: RecordItem = JSON.parse(JSON.stringify(this.record));
+            const newRecord: RecordItem = model.clone(this.record);
             newRecord.createdAt = new Date();
             this.recordList.push(newRecord);
         }
 
         @Watch("recordList")
         onRecordListChange() {
-            window.localStorage.setItem("recordList", JSON.stringify(this.recordList));
+            model.save(this.recordList);
         }
     }
 </script>
