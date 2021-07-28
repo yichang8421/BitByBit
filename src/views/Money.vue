@@ -17,19 +17,10 @@
     import Types from "@/components/money/Types.vue";
     import Vue from "vue";
     import {Component, Watch} from "vue-property-decorator";
-    // import model from "@/model"
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const model = require("@/model").model;
+    import model from "@/model";
 
-    type Record = {
-        type: string,
-        notes: string,
-        tags: string[],
-        amount: number,
-        createdAt?: Date
-    }
-
-    const recordList: Record[] = model.fetch()
+    // eslint-disable-next-line no-undef
+    const recordList = model.fetch();
 
     @Component({
         components: {Types, Notes, Tags, NumberPad}
@@ -37,13 +28,15 @@
 
     export default class Money extends Vue {
         tags = ["衣", "食", "住", "行"];
-        record: Record = {
+        // eslint-disable-next-line no-undef
+        record: RecordItem = {
             type: "-",
             notes: "",
             tags: [],
             amount: 0
         };
-        recordList: Record[] = recordList;
+        // eslint-disable-next-line no-undef
+        recordList: RecordItem[] = recordList;
 
         onUpdateNotes(value: string) {
             this.record.notes = value;
@@ -54,14 +47,15 @@
         }
 
         saveRecord() {
-            const newRecord: Record = JSON.parse(JSON.stringify(this.record));
+            // eslint-disable-next-line no-undef
+            const newRecord: RecordItem = JSON.parse(JSON.stringify(this.record));
             newRecord.createdAt = new Date();
             this.recordList.push(newRecord);
         }
 
         @Watch("recordList")
-        onRecordListChange(){
-            window.localStorage.setItem("recordList",JSON.stringify(this.recordList));
+        onRecordListChange() {
+            window.localStorage.setItem("recordList", JSON.stringify(this.recordList));
         }
     }
 </script>
