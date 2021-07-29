@@ -29,11 +29,13 @@
     export default class Labels extends Vue {
         tags = tagListModel.data;
 
-        createTag(){
-            console.log("nihao");
-            const name = window.prompt('请输入自定义标签');
-            if (name){
-                tagListModel.create(name);
+        createTag() {
+            const name = window.prompt("请输入自定义标签");
+            if (name) {
+                const message = tagListModel.create(name);
+                if (message === "duplicated") {
+                    window.alert("此标签名已添加");
+                }
             }
         }
     }
