@@ -1,4 +1,4 @@
-const localStorageKeyName = "recordList";
+const localStorageKeyName = "model";
 const model = {
     fetch() {
         return JSON.parse(window.localStorage.getItem(localStorageKeyName) || "[]") as RecordItem[];
