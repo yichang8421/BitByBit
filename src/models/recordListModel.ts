@@ -1,5 +1,5 @@
 const localStorageKeyName = "recordList";
-const model = {
+const recordListModel = {
     fetch() {
         return JSON.parse(window.localStorage.getItem(localStorageKeyName) || "[]") as RecordItem[];
     },
@@ -12,4 +12,4 @@ const model = {
 };
 
 // tslint:disable-next-line:no-default-export
-export default model;
+export default recordListModel;

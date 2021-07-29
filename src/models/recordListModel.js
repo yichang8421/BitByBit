@@ -1,5 +1,5 @@
-var localStorageKeyName = "model";
-var model = {
+var localStorageKeyName = "recordList";
+var recordListModel = {
     fetch: function () {
         return JSON.parse(window.localStorage.getItem(localStorageKeyName) || "[]");
     },
@@ -11,5 +11,5 @@ var model = {
     }
 };
 // tslint:disable-next-line:no-default-export
-export default model;
-//# sourceMappingURL=model.js.map
+export default recordListModel;
+//# sourceMappingURL=recordListModel.js.map

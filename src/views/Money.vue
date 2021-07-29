@@ -17,17 +17,19 @@
     import Types from "@/components/money/Types.vue";
     import Vue from "vue";
     import {Component, Watch} from "vue-property-decorator";
-    import model from "@/model";
+    import recordListModel from "@/models/recordListModel";
+    import tagListModel from "@/models/tagListModel";
 
     // eslint-disable-next-line no-undef
-    const recordList = model.fetch();
+    const recordList = recordListModel.fetch();
+    const tagList = tagListModel.fetch();
 
     @Component({
         components: {Types, Notes, Tags, NumberPad}
     })
 
     export default class Money extends Vue {
-        tags = ["衣", "食", "住", "行"];
+        tags = tagList;
         // eslint-disable-next-line no-undef
         record: RecordItem = {
             type: "-",
@@ -48,14 +50,14 @@
 
         saveRecord() {
             // eslint-disable-next-line no-undef
-            const newRecord: RecordItem = model.clone(this.record);
+            const newRecord: RecordItem = recordListModel.clone(this.record);
             newRecord.createdAt = new Date();
             this.recordList.push(newRecord);
         }
 
         @Watch("recordList")
         onRecordListChange() {
-            model.save(this.recordList);
+            recordListModel.save(this.recordList);
         }
     }
 </script>
