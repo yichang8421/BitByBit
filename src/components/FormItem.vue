@@ -17,7 +17,7 @@
     export default class FormItem extends Vue {
         @Prop({required: true}) fielName!: string;
         @Prop(String) placeholder?: string;
-        value = "";
+        @Prop({default: ""}) value!: string;
 
         @Watch("value")
         onValueChanged(value: string) {
