@@ -27,14 +27,13 @@
 
     // eslint-disable-next-line no-undef
     const recordList = recordListModel.fetch();
-    const tagList = tagListModel.fetch().map(item => item.name);
 
     @Component({
         components: {Types, FormItem, Tags, NumberPad}
     })
 
     export default class Money extends Vue {
-        tags = tagList;
+        tags = window.tagList.map(item => item.name);
         // eslint-disable-next-line no-undef
         record: RecordItem = {
             type: "-",
