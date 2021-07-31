@@ -4,6 +4,7 @@ import Money from "@/views/Money.vue";
 import Labels from "@/views/Labels.vue";
 import Statistics from "@/views/Statistics.vue";
 import NotFound from "@/views/NotFound.vue";
+import EditLabel from "@/views/EditLabel.vue";
 Vue.use(VueRouter);
 var routes = [
     {
@@ -23,6 +24,10 @@ var routes = [
         component: Statistics
     },
     {
+        path: '/labels/edit',
+        component: EditLabel
+    },
+    {
         path: '*',
         component: NotFound
     }
@@ -30,5 +35,6 @@ var routes = [
 var router = new VueRouter({
     routes: routes
 });
+// tslint:disable-next-line:no-default-export
 export default router;
 //# sourceMappingURL=index.js.map

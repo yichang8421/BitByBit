@@ -22,7 +22,7 @@
 
     // eslint-disable-next-line no-undef
     const recordList = recordListModel.fetch();
-    const tagList = tagListModel.fetch();
+    const tagList = tagListModel.fetch().map(item => item.name);
 
     @Component({
         components: {Types, Notes, Tags, NumberPad}
