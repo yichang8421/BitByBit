@@ -19,14 +19,3 @@ type Tag = {
     id: string,
     name: string
 }
-
-// tslint:disable-next-line:interface-name
-interface Window {
-    tagList: Tag[],
-    createTag: (name: string) => void,
-    removeTag: TagListModel["remove"],
-    updateTag: TagListModel["update"],
-    findTag: (id: string) => Tag | undefined,
-    recordList: RecordItem[],
-    createRecord: (record: RecordItem) => void
-}
