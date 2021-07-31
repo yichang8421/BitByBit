@@ -49,7 +49,7 @@
         }
 
         saveRecord() {
-            store.createRecord(this.record);
+            store.createRecords(this.record);
         }
     }
 </script>
