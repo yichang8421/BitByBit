@@ -11,6 +11,7 @@ const recordStore = {
         // JSON.parse的目的是将null转为空字符输出。如果没有使用JSON.parse，那输出的值为null(4个字符)。
         // 运行代码前最好先清空localStorage。避免出现无法渲染情况
         this.recordList = JSON.parse(window.localStorage.getItem(localStorageKeyName) || "[]") as RecordItem[];
+        console.log("ok");
         return this.recordList;
     },
 
