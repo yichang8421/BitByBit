@@ -7,11 +7,12 @@
         </div>
         <div class="form-wrapper">
             <FormItem :value="tag.name"
+                      @update:value="updateTag"
                       fiel-name="标签名"
                       placeholder="请输入标签名"/>
         </div>
         <div class="button-wrapper">
-            <Button>删除标签</Button>
+            <Button @click="removeTag">删除标签</Button>
         </div>
     </Layout>
 </template>
@@ -39,6 +40,18 @@
                 this.tag = tag;
             } else {
                 this.$router.replace("/404");
+            }
+        }
+
+        updateTag(name: string) {
+            if (this.tag) {
+                tagListModel.update(this.tag.id, name);
+            }
+        }
+
+        removeTag() {
+            if (this.tag) {
+                tagListModel.remove(this.tag.id);
             }
         }
     }
