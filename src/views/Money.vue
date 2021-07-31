@@ -5,7 +5,9 @@
         <Tags :data-source.sync="tags"
               @update:value="onUpdateTags"
         />
-        <Notes @update:value="onUpdateNotes"/>
+        <Notes fiel-name="备注"
+               @update:value="onUpdateNotes"
+               placeholder="此处添加备注"/>
         <Types :value.sync="record.type"/>
     </Layout>
 </template>
