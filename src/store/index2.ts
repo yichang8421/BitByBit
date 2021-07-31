@@ -9,5 +9,7 @@ const store = {
     ...tagStore
 };
 
+// console.log(store);
+
 // tslint:disable-next-line:no-default-export
 export default store;

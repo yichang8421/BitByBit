@@ -25,7 +25,12 @@
     import store from "@/store/index2";
 
     @Component({
-        components: {Types, FormItem, Tags, NumberPad}
+        components: {Types, FormItem, Tags, NumberPad},
+        computed: {
+            recordList() {
+                return store.recordList;
+            }
+        }
     })
 
     export default class Money extends Vue {
@@ -38,7 +43,6 @@
             amount: 0
         };
 
-        recordList = store.recordList;
 
         onUpdateNotes(value: string) {
             this.record.notes = value;
