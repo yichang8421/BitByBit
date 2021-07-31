@@ -6,7 +6,8 @@
             <span class="rightSpan"/>
         </div>
         <div class="form-wrapper">
-            <FormItem fiel-name="标签名"
+            <FormItem :value="tag.name"
+                      fiel-name="标签名"
                       placeholder="请输入标签名"/>
         </div>
         <div class="button-wrapper">
@@ -26,13 +27,16 @@
         components: {Button, FormItem}
     })
     export default class EditLabel extends Vue {
+        // eslint-disable-next-line no-undef
+        tag?: Tag = undefined;
+
         created() {
             const id = this.$route.params.id;
             tagListModel.fetch();
             const tags = tagListModel.data;
             const tag = tags.filter(t => t.id === id)[0];
             if (tag) {
-                console.log(tag);
+                this.tag = tag;
             } else {
                 this.$router.replace("/404");
             }
