@@ -22,5 +22,6 @@ type Tag = {
 
 // tslint:disable-next-line:interface-name
 interface Window {
-    tagList: Tag[]
+    tagList: Tag[],
+    createTag: (string: string) => void
 }
