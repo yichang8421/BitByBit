@@ -12,7 +12,7 @@
         <div class="createTag-wrapper">
             <Button class="createTag"
                     @click="createTag">
-<!-- Button使用单独封装的click事件，也可以使用.native修饰符使用原生click事件  -->
+                <!-- Button使用单独封装的click事件，也可以使用.native修饰符使用原生click事件  -->
                 新建标签
             </Button>
         </div>

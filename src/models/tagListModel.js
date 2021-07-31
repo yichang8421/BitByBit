@@ -1,3 +1,4 @@
+import createId from "@/lib/createId";
 var localStorageKeyName = "tagList";
 var tagListModel = {
     data: [],
@@ -13,7 +14,8 @@ var tagListModel = {
         if (names.indexOf(name) >= 0) {
             return "duplicated";
         }
-        this.data.push({ id: name, name: name });
+        var id = createId().toString();
+        this.data.push({ id: id, name: name });
         this.save();
         return "success";
     },
