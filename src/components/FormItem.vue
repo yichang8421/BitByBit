@@ -20,7 +20,6 @@
         @Prop(String) placeholder?: string;
         @Prop({default: ""}) readonly value!: string;
 
-        @Watch("value")
         onValueChanged(value: string) {
             this.$emit("update:value", value);
         }
