@@ -13,11 +13,20 @@ Vue.component("Layout", Layout);
 Vue.component("Nav", Nav);
 Vue.component("Icon", Icon);
 window.tagList = tagListModel.fetch();
+window.findTag = function (id) {
+    return window.tagList.filter(function (t) { return t.id === id; })[0];
+};
 window.createTag = function (name) {
     var message = tagListModel.create(name);
     if (message === "duplicated") {
         window.alert("此标签名已添加");
     }
+};
+window.removeTag = function (id) {
+    return tagListModel.remove(id);
+};
+window.updateTag = function (id, name) {
+    return tagListModel.update(id, name);
 };
 new Vue({
     router: router,

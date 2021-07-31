@@ -12,7 +12,7 @@ type TagListModel = {
     save: () => void,
     create: (name: string) => "success" | "duplicated",
     update: (id: string, name: string) => "success" | "not_found" | "duplicated",
-    remove: (id: string) => boolean
+    remove: (id: string) => boolean,
 }
 
 type Tag = {
@@ -23,5 +23,8 @@ type Tag = {
 // tslint:disable-next-line:interface-name
 interface Window {
     tagList: Tag[],
-    createTag: (string: string) => void
+    createTag: (name: string) => void,
+    removeTag: TagListModel["remove"],
+    updateTag: TagListModel["update"],
+    findTag: (id: string) => Tag | undefined
 }
