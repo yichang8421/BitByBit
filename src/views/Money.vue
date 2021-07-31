@@ -5,7 +5,7 @@
         <Tags :data-source.sync="tags"
               @update:value="onUpdateTags"
         />
-        <Notes fiel-name="备注"
+        <FormItem fiel-name="备注"
                @update:value="onUpdateNotes"
                placeholder="此处添加备注"/>
         <Types :value.sync="record.type"/>
@@ -15,7 +15,7 @@
 <script lang="ts">
     import NumberPad from "@/components/money/NumberPad.vue";
     import Tags from "@/components/money/Tags.vue";
-    import Notes from "@/components/money/Notes.vue";
+    import FormItem from "@/components/money/FormItem.vue";
     import Types from "@/components/money/Types.vue";
     import Vue from "vue";
     import {Component, Watch} from "vue-property-decorator";
@@ -27,7 +27,7 @@
     const tagList = tagListModel.fetch().map(item => item.name);
 
     @Component({
-        components: {Types, Notes, Tags, NumberPad}
+        components: {Types, FormItem, Tags, NumberPad}
     })
 
     export default class Money extends Vue {
