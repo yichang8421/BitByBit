@@ -54,15 +54,12 @@
         }
 
         saveRecord() {
-            // eslint-disable-next-line no-undef
-            const newRecord: RecordItem = recordListModel.clone(this.record);
-            newRecord.createdAt = new Date();
-            this.recordList.push(newRecord);
+            recordListModel.create(this.record);
         }
 
         @Watch("recordList")
         onRecordListChange() {
-            recordListModel.save(this.recordList);
+            recordListModel.save();
         }
     }
 </script>
