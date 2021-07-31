@@ -3,9 +3,15 @@
         <div class="navBar">
             <Icon name="left" class="leftIcon"/>
             <span class="title">编辑标签</span>
+            <span class="rightSpan"/>
         </div>
-        <FormItem fiel-name="标签名"
-               placeholder="请输入标签名"/>
+        <div class="form-wrapper">
+            <FormItem fiel-name="标签名"
+                      placeholder="请输入标签名"/>
+        </div>
+        <div class="button-wrapper">
+            <Button>删除标签</Button>
+        </div>
     </Layout>
 </template>
 
@@ -13,9 +19,11 @@
     import Vue from "vue";
     import {Component} from "vue-property-decorator";
     import tagListModel from "@/models/tagListModel";
-    import FormItem from "@/components/money/FormItem.vue";
+    import FormItem from "@/components/FormItem.vue";
+    import Button from "@/components/Button.vue";
+
     @Component({
-        components: {FormItem}
+        components: {Button, FormItem}
     })
     export default class EditLabel extends Vue {
         created() {
@@ -39,12 +47,31 @@
         padding: 12px 16px;
         background: white;
         display: flex;
-        align-content: center;
+        align-items: center;
         justify-content: space-between;
+
+        > .title {
+        }
 
         > .leftIcon {
             width: 16px;
             height: 16px;
         }
+
+        > .rightSpan {
+            width: 16px;
+            height: 16px;
+        }
+    }
+
+    .form-wrapper {
+        background: white;
+        margin-top: 8px;
+    }
+
+    .button-wrapper {
+        text-align: center;
+        padding: 16px;
+        margin-top: 44-16px;
     }
 </style>

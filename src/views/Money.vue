@@ -5,9 +5,11 @@
         <Tags :data-source.sync="tags"
               @update:value="onUpdateTags"
         />
-        <FormItem fiel-name="备注"
-               @update:value="onUpdateNotes"
-               placeholder="此处添加备注"/>
+        <div class="notes">
+            <FormItem fiel-name="备注"
+                      @update:value="onUpdateNotes"
+                      placeholder="此处添加备注"/>
+        </div>
         <Types :value.sync="record.type"/>
     </Layout>
 </template>
@@ -15,7 +17,7 @@
 <script lang="ts">
     import NumberPad from "@/components/money/NumberPad.vue";
     import Tags from "@/components/money/Tags.vue";
-    import FormItem from "@/components/money/FormItem.vue";
+    import FormItem from "@/components/FormItem.vue";
     import Types from "@/components/money/Types.vue";
     import Vue from "vue";
     import {Component, Watch} from "vue-property-decorator";
@@ -70,5 +72,9 @@
         display: flex;
         flex-direction: column-reverse;
 
+    }
+
+    .notes {
+        padding: 12px 0;
     }
 </style>
