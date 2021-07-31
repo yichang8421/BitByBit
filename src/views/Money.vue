@@ -1,5 +1,6 @@
 <template>
     <Layout class-prefix="layout">
+        {{record}}
         <NumberPad :value.sync="record.amount"
                    @submit="saveRecord"/>
         <Tags :data-source.sync="tags"
