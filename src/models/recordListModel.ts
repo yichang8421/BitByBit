@@ -9,6 +9,7 @@ const recordListModel = {
         const newRecord: RecordItem = clone(record);
         newRecord.createdAt = new Date();
         this.data.push(newRecord);
+        this.save();
     },
 
     fetch() {

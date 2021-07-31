@@ -22,17 +22,13 @@
     import Types from "@/components/money/Types.vue";
     import Vue from "vue";
     import {Component, Watch} from "vue-property-decorator";
-    import recordListModel from "@/models/recordListModel";
-
-    // eslint-disable-next-line no-undef
-    const recordList = recordListModel.fetch();
 
     @Component({
         components: {Types, FormItem, Tags, NumberPad}
     })
 
     export default class Money extends Vue {
-        tags = window.tagList.map(item => item.name);
+        tags = window.tagList;
         // eslint-disable-next-line no-undef
         record: RecordItem = {
             type: "-",
@@ -40,8 +36,8 @@
             tags: [],
             amount: 0
         };
-        // eslint-disable-next-line no-undef
-        recordList: RecordItem[] = recordList;
+
+        recordList = window.recordList;
 
         onUpdateNotes(value: string) {
             this.record.notes = value;
@@ -52,12 +48,7 @@
         }
 
         saveRecord() {
-            recordListModel.create(this.record);
-        }
-
-        @Watch("recordList")
-        onRecordListChange() {
-            recordListModel.save();
+            window.createRecord(this.record);
         }
     }
 </script>
