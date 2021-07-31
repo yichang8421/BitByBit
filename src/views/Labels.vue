@@ -10,10 +10,11 @@
             </router-link>
         </div>
         <div class="createTag-wrapper">
-            <button class="createTag"
+            <Button class="createTag"
                     @click="createTag">
+<!-- Button使用单独封装的click事件，也可以使用.native修饰符使用原生click事件  -->
                 新建标签
-            </button>
+            </Button>
         </div>
     </Layout>
 </template>
