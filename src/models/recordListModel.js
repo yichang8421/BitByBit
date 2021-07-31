@@ -1,10 +1,12 @@
 var localStorageKeyName = "recordList";
 var recordListModel = {
+    data: [],
     fetch: function () {
-        return JSON.parse(window.localStorage.getItem(localStorageKeyName) || "[]");
+        this.data = JSON.parse(window.localStorage.getItem(localStorageKeyName) || "[]");
+        return this.data;
     },
-    save: function (data) {
-        window.localStorage.setItem(localStorageKeyName, JSON.stringify(data));
+    save: function () {
+        window.localStorage.setItem(localStorageKeyName, JSON.stringify(this.data));
     },
     clone: function (data) {
         return JSON.parse(JSON.stringify(data));
