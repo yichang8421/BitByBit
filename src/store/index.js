@@ -6,7 +6,8 @@ Vue.use(Vuex);
 var store = new Vuex.Store({
     state: {
         recordList: [],
-        tagList: []
+        tagList: [],
+        currentTag: undefined
     },
     mutations: {
         fetchRecords: function (state) {
@@ -25,8 +26,8 @@ var store = new Vuex.Store({
         fetchTags: function (state) {
             state.tagList = JSON.parse(window.localStorage.getItem("tagList") || "[]");
         },
-        findTag: function (stats, id) {
-            return stats.tagList.filter(function (t) { return t.id === id; })[0];
+        setCurrentTag: function (state, id) {
+            state.currentTag = state.tagList.filter(function (t) { return t.id === id; })[0];
         },
         saveTags: function (state) {
             window.localStorage.setItem("tagList", JSON.stringify(state.tagList));
@@ -35,12 +36,10 @@ var store = new Vuex.Store({
             var names = state.tagList.map(function (item) { return item.name; });
             if (names.indexOf(name) >= 0) {
                 window.alert("此标签名已添加");
-                return "duplicated";
             }
             var id = createId().toString();
             state.tagList.push({ id: id, name: name });
             store.commit("saveTags");
-            return "success";
         },
         removeTag: function (state, id) {
             var index = -1;

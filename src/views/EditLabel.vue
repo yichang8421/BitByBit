@@ -25,13 +25,16 @@
     import store from "@/store/index2";
 
     @Component({
-        components: {Button, FormItem}
+        components: {Button, FormItem},
     })
     export default class EditLabel extends Vue {
-        // eslint-disable-next-line no-undef
-        tag = store.findTag(this.$route.params.id);
+        get tag() {
+            return this.$store.state["currentTag"];
+        }
 
         created() {
+            const id = this.$route.params.id;
+            this.$store.commit("setCurrentTag", id);
             if (!(this.tag)) {
                 this.$router.replace("/404");
             }
