@@ -39,7 +39,7 @@ var store = new Vuex.Store({
             }
             var id = createId().toString();
             state.tagList.push({ id: id, name: name });
-            store.commit("saveTags", state);
+            store.commit("saveTags");
             return "success";
         },
         removeTag: function (state, id) {
@@ -51,7 +51,7 @@ var store = new Vuex.Store({
                 }
             }
             state.tagList.splice(index, 1);
-            store.commit("saveTags", state);
+            store.commit("saveTags");
             return true;
         },
         updateTag: function (state, _a) {
@@ -65,7 +65,7 @@ var store = new Vuex.Store({
                 else {
                     var tag = state.tagList.filter(function (item) { return item.id === id; })[0];
                     tag.name = name;
-                    store.commit("saveTags", state);
+                    store.commit("saveTags");
                     return "success";
                 }
             }

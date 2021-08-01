@@ -4,8 +4,7 @@
         <NumberPad :value.sync="record.amount"
                    @submit="saveRecord"/>
         <Tags :data-source.sync="tags"
-              @update:value="onUpdateTags"
-        />
+              @update:value="onUpdateTags"/>
         <div class="notes">
             <FormItem fiel-name="备注"
                       @update:value="onUpdateNotes"
@@ -22,11 +21,13 @@
     import Types from "@/components/money/Types.vue";
     import Vue from "vue";
     import {Component, Watch} from "vue-property-decorator";
-    // import store from "@/store/index2";
 
     @Component({
         components: {Types, FormItem, Tags, NumberPad},
         computed: {
+            tags(){
+              return this.$store.state.tagList;
+            },
             recordList() {
                 return this.$store.state.recordList;
             }
@@ -34,7 +35,6 @@
     })
 
     export default class Money extends Vue {
-        tags = this.$store.state.tagList;
         // eslint-disable-next-line no-undef
         record: RecordItem = {
             type: "-",
@@ -42,7 +42,6 @@
             tags: [],
             amount: 0
         };
-
 
         onUpdateNotes(value: string) {
             this.record.notes = value;
@@ -53,7 +52,7 @@
         }
 
         saveRecord() {
-            this.$store.commit('createRecords',this.record);
+            this.$store.commit("createRecords", this.record);
         }
     }
 </script>
