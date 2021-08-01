@@ -23,18 +23,19 @@
     import {Component, Watch} from "vue-property-decorator";
 
     @Component({
-        components: {Types, FormItem, Tags, NumberPad},
-        computed: {
-            tags(){
-              return this.$store.state.tagList;
-            },
-            recordList() {
-                return this.$store.state.recordList;
-            }
-        }
+        components: {Types, FormItem, Tags, NumberPad}
     })
 
     export default class Money extends Vue {
+        // eslint-disable-next-line no-undef
+        get tags() {
+            return this.$store.state.tagList;
+        }
+
+        get recordList() {
+            return this.$store.state.recordList;
+        }
+
         // eslint-disable-next-line no-undef
         record: RecordItem = {
             type: "-",
