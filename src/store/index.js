@@ -37,39 +37,41 @@ var store = new Vuex.Store({
             if (names.indexOf(name) >= 0) {
                 window.alert("此标签名已添加");
             }
-            var id = createId().toString();
-            state.tagList.push({ id: id, name: name });
-            store.commit("saveTags");
+            else {
+                var id = createId().toString();
+                state.tagList.push({ id: id, name: name });
+                store.commit("saveTags");
+            }
         },
+        //TODO
         removeTag: function (state, id) {
             var index = -1;
-            for (var i = 0; i < this.tagList.length; i++) {
+            for (var i = 0; i < state.tagList.length; i++) {
                 if (state.tagList[i].id === id) {
                     index = i;
                     break;
                 }
             }
+            // console.log(index);
             state.tagList.splice(index, 1);
             store.commit("saveTags");
-            return true;
         },
-        updateTag: function (state, _a) {
-            var id = _a.id, name = _a.name;
+        updateTag: function (state, payload) {
+            var id = payload.id, name = payload.name;
             var idList = state.tagList.map(function (item) { return item.id; });
             if (idList.indexOf(id) >= 0) {
                 var names = state.tagList.map(function (item) { return item.name; });
                 if (names.indexOf(name) >= 0) {
-                    return "duplicated";
+                    window.alert("标签名重复");
                 }
                 else {
                     var tag = state.tagList.filter(function (item) { return item.id === id; })[0];
                     tag.name = name;
                     store.commit("saveTags");
-                    return "success";
                 }
             }
-            else {
-                return "not_found";
+            if (name === "") {
+                store.commit("removeTag");
             }
         }
     },

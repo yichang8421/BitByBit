@@ -22,7 +22,7 @@
     import {Component} from "vue-property-decorator";
     import FormItem from "@/components/FormItem.vue";
     import Button from "@/components/Button.vue";
-    import store from "@/store/index2";
+    // import store from "@/store/index2";
 
     @Component({
         components: {Button, FormItem},
@@ -33,6 +33,7 @@
         }
 
         created() {
+            this.$store.commit("fetchTags");
             const id = this.$route.params.id;
             this.$store.commit("setCurrentTag", id);
             if (!(this.tag)) {
@@ -42,17 +43,17 @@
 
         updateTag(name: string) {
             if (this.tag) {
-                store.updateTag(this.tag.id, name);
+                this.$store.commit("updateTag", {
+                    id: this.tag.id,
+                    name
+                });
             }
         }
 
         removeTag() {
             if (this.tag) {
-                if (store.removeTag(this.tag.id)) {
-                    // this.$router.back();
-                } else {
-                    window.alert("删除失败");
-                }
+                this.$store.commit("removeTag");
+                // this.$router.back();
             }
         }
 
