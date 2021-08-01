@@ -29,7 +29,7 @@
     })
     export default class EditLabel extends Vue {
         get tag() {
-            return this.$store.state.currentTag;
+            return this.$store.state["currentTag"];
         }
 
         created() {

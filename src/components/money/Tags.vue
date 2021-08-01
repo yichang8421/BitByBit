@@ -28,7 +28,7 @@
         selectedTags: string[] = [];
 
         get tagList() {
-            return this.$store.state.tagList;
+            return this.$store.state["tagList"];
         }
 
         created() {

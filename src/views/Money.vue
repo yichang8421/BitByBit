@@ -29,11 +29,11 @@
     export default class Money extends Vue {
         // eslint-disable-next-line no-undef
         get tags() {
-            return this.$store.state.tagList;
+            return this.$store.state["tagList"];
         }
 
         get recordList() {
-            return this.$store.state.recordList;
+            return this.$store.state["recordList"];
         }
 
         // eslint-disable-next-line no-undef
