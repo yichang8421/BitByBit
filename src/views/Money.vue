@@ -22,19 +22,19 @@
     import Types from "@/components/money/Types.vue";
     import Vue from "vue";
     import {Component, Watch} from "vue-property-decorator";
-    import store from "@/store/index2";
+    // import store from "@/store/index2";
 
     @Component({
         components: {Types, FormItem, Tags, NumberPad},
         computed: {
             recordList() {
-                return store.recordList;
+                return this.$store.state.recordList;
             }
         }
     })
 
     export default class Money extends Vue {
-        tags = store.tagList;
+        tags = this.$store.state.tagList;
         // eslint-disable-next-line no-undef
         record: RecordItem = {
             type: "-",
@@ -53,7 +53,7 @@
         }
 
         saveRecord() {
-            store.createRecords(this.record);
+            this.$store.commit('createRecords',this.record);
         }
     }
 </script>
