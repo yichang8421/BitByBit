@@ -10,7 +10,6 @@
                       @update:value="onUpdateNotes"
                       placeholder="此处添加备注"/>
         </div>
-<!--        <Types :value.sync="record.type"/>-->
         <Tabs :data-source="recrodTypeList"
               :value.sync="record.type"/>
     </Layout>
@@ -20,14 +19,13 @@
     import NumberPad from "@/components/money/NumberPad.vue";
     import Tags from "@/components/money/Tags.vue";
     import FormItem from "@/components/FormItem.vue";
-    import Types from "@/components/money/Types.vue";
     import Vue from "vue";
     import {Component, Watch} from "vue-property-decorator";
     import recordTypeList from "@/constants/recordTypeList";
     import Tabs from "@/components/statistics/Tabs.vue";
 
     @Component({
-        components: {Tabs, Types, FormItem, Tags, NumberPad}
+        components: {Tabs, FormItem, Tags, NumberPad}
     })
 
     export default class Money extends Vue {
