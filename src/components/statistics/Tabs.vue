@@ -2,6 +2,7 @@
     <div>
         <ul class="tabs">
             <li v-for="item in dataSource" :key="item.value"
+                class="tabs-item"
                 :class="liClass(item)"
                 @click="select(item)">
                 {{item.taxt}}
@@ -29,8 +30,7 @@
             return {
                 [this.classPrefix + "-tabs-item"]: this.classPrefix,
                 selected: item.value === this.value
-            }
-                ;
+            };
         }
 
         // eslint-disable-next-line no-undef

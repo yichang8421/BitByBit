@@ -10,7 +10,9 @@
                       @update:value="onUpdateNotes"
                       placeholder="此处添加备注"/>
         </div>
-        <Types :value.sync="record.type"/>
+<!--        <Types :value.sync="record.type"/>-->
+        <Tabs :data-source="recrodTypeList"
+              :value.sync="record.type"/>
     </Layout>
 </template>
 
@@ -21,9 +23,11 @@
     import Types from "@/components/money/Types.vue";
     import Vue from "vue";
     import {Component, Watch} from "vue-property-decorator";
+    import recordTypeList from "@/constants/recordTypeList";
+    import Tabs from "@/components/statistics/Tabs.vue";
 
     @Component({
-        components: {Types, FormItem, Tags, NumberPad}
+        components: {Tabs, Types, FormItem, Tags, NumberPad}
     })
 
     export default class Money extends Vue {
@@ -35,6 +39,8 @@
         get recordList() {
             return this.$store.state["recordList"];
         }
+
+        recrodTypeList = recordTypeList;
 
         // eslint-disable-next-line no-undef
         record: RecordItem = {
