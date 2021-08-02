@@ -1,9 +1,9 @@
 <template>
     <Layout>
         <Tabs class-prefix="recordTypeList" :data-source="recordTypeList" :value.sync="recordType"/>
-        <Tabs class-prefix="interval" :data-source="intervalList" :value.sync="interval"/>
+        <Tabs class-prefix="intervalList" :data-source="intervalList" :value.sync="interval"/>
         <div>
-            type:{{type}}
+            recordType:{{recordType}}
             <br>
             interval:{{interval}}
         </div>
@@ -39,5 +39,9 @@
                 display: none;
             }
         }
+    }
+
+    ::v-deep .intervalList-tabs-item {
+        height: 48px;
     }
 </style>
