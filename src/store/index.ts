@@ -22,7 +22,7 @@ const store = new Vuex.Store({
 
         createRecords(state, record: RecordItem) {
             const newRecord: RecordItem = clone(record);
-            newRecord.createdAt = new Date();
+            newRecord.createdAt = new Date().toISOString();
             state.recordList?.push(newRecord);
             store.commit("saveRecords");
         },
@@ -50,8 +50,7 @@ const store = new Vuex.Store({
             }
         },
 
-
-        //TODO
+        // ???
         removeTag(state, id: string) {
             let index = -1;
             for (let i = 0; i < state.tagList.length; i++) {

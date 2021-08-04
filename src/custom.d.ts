@@ -3,7 +3,7 @@ type RecordItem = {
     notes: string,
     tags: string[],
     amount: number,
-    createdAt?: Date
+    createdAt?: string
 }
 
 type TagListModel = {
@@ -27,3 +27,8 @@ type RootState = {
 }
 
 type DataSourceItem = { taxt: string, value: string }
+
+type HashTableIValue = {
+    title: string,
+    items: RecordItem[]
+}
