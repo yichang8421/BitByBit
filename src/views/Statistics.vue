@@ -1,7 +1,7 @@
 <template>
     <Layout>
         <Tabs class-prefix="recordTypeList" :data-source="recordTypeList" :value.sync="recordType"/>
-        <Tabs class-prefix="intervalList" :data-source="intervalList" :value.sync="interval"/>
+        <Tabs class-prefix="intervalList" :data-source="intervalList" :value.sync="interval" height="48px"/>
         <div>
             recordType:{{recordType}}
             <br>
@@ -29,19 +29,21 @@
 </script>
 
 <style lang="scss" scoped>
-    ::v-deep .recordTypeList-tabs-item {
-        background: white;
+    ::v-deep {
+        .recordTypeList-tabs-item {
+            background: white;
 
-        &.selected {
-            background: #c4c4c4;
+            &.selected {
+                background: #c4c4c4;
 
-            &::after {
-                display: none;
+                &::after {
+                    display: none;
+                }
             }
         }
-    }
 
-    ::v-deep .intervalList-tabs-item {
-        height: 48px;
+        .intervalList-tabs-item {
+            /*height: 48px;*/
+        }
     }
 </style>

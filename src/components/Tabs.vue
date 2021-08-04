@@ -3,7 +3,8 @@
         <li v-for="item in dataSource" :key="item.value"
             class="tabs-item"
             :class="liClass(item)"
-            @click="select(item)">
+            @click="select(item)"
+            :style="{height:height}">
             {{item.taxt}}
         </li>
     </ul>
@@ -22,6 +23,8 @@
         readonly value!: string;
         @Prop(String)
         classPrefix?: string;
+        @Prop({type: String, default: "64px"})
+        height!: string;
 
         // eslint-disable-next-line no-undef
         liClass(item: DataSourceItem) {
@@ -49,7 +52,7 @@
 
         &-item {
             width: 50%;
-            height: 64px;
+            /*height: 64px;*/
             display: flex;
             justify-content: center;
             align-items: center;
