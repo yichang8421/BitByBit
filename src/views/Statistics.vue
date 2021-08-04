@@ -13,7 +13,7 @@
 <script lang="ts">
     import Vue from "vue";
     import {Component} from "vue-property-decorator";
-    import Tabs from "@/components/statistics/Tabs.vue";
+    import Tabs from "@/components/Tabs.vue";
     import intervalList from "@/constants/intervalList";
     import recordTypeList from "@/constants/recordTypeList";
 

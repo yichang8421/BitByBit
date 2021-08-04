@@ -22,7 +22,7 @@
     import Vue from "vue";
     import {Component, Watch} from "vue-property-decorator";
     import recordTypeList from "@/constants/recordTypeList";
-    import Tabs from "@/components/statistics/Tabs.vue";
+    import Tabs from "@/components/Tabs.vue";
 
     @Component({
         components: {Tabs, FormItem, Tags, NumberPad}
