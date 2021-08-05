@@ -1,11 +1,11 @@
 <template>
     <Layout>
         <Tabs class-prefix="recordTypeList" :data-source="recordTypeList" :value.sync="recordType"/>
-<!--        <Tabs class-prefix="intervalList" :data-source="intervalList" :value.sync="interval" height="48px"/>-->
+        <!--        <Tabs class-prefix="intervalList" :data-source="intervalList" :value.sync="interval" height="48px"/>-->
 
         <ol>
             <li v-for="(group,index) in groupedList" :key="index">
-                <h3 class="title">{{beautify(group.title)}}</h3>
+                <h3 class="title">{{beautify(group.title)}} <span>￥{{group.total}}</span></h3>
                 <ol>
                     <li class="record" v-for="item in group.items" :key="item.id">
                         <span>{{tagString(item.tags)}}</span>
@@ -22,7 +22,7 @@
     import Vue from "vue";
     import {Component} from "vue-property-decorator";
     import Tabs from "@/components/Tabs.vue";
-    import intervalList from "@/constants/intervalList";
+    // import intervalList from "@/constants/intervalList";
     import recordTypeList from "@/constants/recordTypeList";
     import dayjs from "dayjs";
     import clone from "@/lib/clone";
@@ -48,11 +48,20 @@
         // eslint-disable-next-line getter-return
         get groupedList() {
             const {recordList} = this;
-            if (!recordList) return [];
+            if (!recordList.length === 0) return [];
 
-            const newList = clone(recordList).sort((a, b) => dayjs(b.createdAt).valueOf() - dayjs(a.createdAt).valueOf());
+            const newList = clone(recordList)
+                .filter(r => r.type === this.recordType)
+                .sort((a, b) => dayjs(b.createdAt).valueOf() - dayjs(a.createdAt).valueOf());
 
-            const result = [{title: dayjs(newList[0].createdAt).format("YYYY-MM-DD"), items: [newList[0]]}];
+            type Result = {
+                title: string,
+                total?: number,
+                // eslint-disable-next-line no-undef
+                items: RecordItem[]
+            }[]
+
+            const result: Result = [{title: dayjs(newList[0].createdAt).format("YYYY-MM-DD"), items: [newList[0]]}];
             for (let i = 1; i < newList.length; i++) {
                 const current = newList[i];
                 const last = result[result.length - 1];
@@ -64,12 +73,18 @@
                 }
             }
 
+            result.map(group => {
+                group.total = group.items.reduce((sum, item) => {
+                    return sum + item.amount;
+                }, 0);
+            });
+
             return result;
         }
 
         // eslint-disable-next-line no-undef
         tagString(tags: Tag[]) {
-            return tags.length === 0 ? '无' : tags.join(',');
+            return tags.length === 0 ? "无" : tags.join(",");
         }
 
         beautify(string: string) {

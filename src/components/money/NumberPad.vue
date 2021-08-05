@@ -66,9 +66,10 @@
 
         ok() {
             //修改record.amount
-            this.$emit("update:value",parseFloat(this.output));
+            const number = parseFloat(this.output);
+            this.$emit("update:value", number);
             //提交record
-            this.$emit("submit", this.output);
+            this.$emit("submit", number);
             this.output = "0";
         }
 
