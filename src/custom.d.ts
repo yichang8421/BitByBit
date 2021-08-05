@@ -1,7 +1,7 @@
 type RecordItem = {
     type: string,
     notes: string,
-    tags: string[],
+    tags: Tag[],
     amount: number,
     createdAt?: string
 }
