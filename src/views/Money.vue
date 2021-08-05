@@ -52,7 +52,8 @@
             this.record.notes = value;
         }
 
-        onUpdateTags(value: string[]) {
+        // eslint-disable-next-line no-undef
+        onUpdateTags(value: Tag[]) {
             this.record.tags = value;
         }
 
@@ -62,8 +63,8 @@
     }
 </script>
 
-<style lang="scss">
-    .layout-content {
+<style lang="scss" scoped>
+    ::v-deep .layout-content {
         /*border: 1px solid red;*/
         display: flex;
         flex-direction: column-reverse;
