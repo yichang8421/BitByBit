@@ -1,6 +1,5 @@
 <template>
     <Layout class-prefix="layout">
-        {{record}}
         <NumberPad :value.sync="record.amount"
                    @submit="saveRecord"/>
         <Tags :data-source.sync="tags"
@@ -8,6 +7,7 @@
         <div class="notes">
             <FormItem fiel-name="备注"
                       @update:value="onUpdateNotes"
+                      :value.sync="record.notes"
                       placeholder="此处添加备注"/>
         </div>
         <Tabs :data-source="recrodTypeList"
@@ -58,7 +58,11 @@
         }
 
         saveRecord() {
+            if (!this.record.tags.length) {
+                return window.alert("请选择至少一个标签");
+            }
             this.$store.commit("createRecords", this.record);
+            this.record.notes = "";
         }
     }
 </script>

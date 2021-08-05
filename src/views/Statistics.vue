@@ -3,7 +3,7 @@
         <Tabs class-prefix="recordTypeList" :data-source="recordTypeList" :value.sync="recordType"/>
         <!--        <Tabs class-prefix="intervalList" :data-source="intervalList" :value.sync="interval" height="48px"/>-->
 
-        <ol>
+        <ol v-if="groupedList.length>0">
             <li v-for="(group,index) in groupedList" :key="index">
                 <h3 class="title">{{beautify(group.title)}} <span>￥{{group.total}}</span></h3>
                 <ol>
@@ -15,6 +15,9 @@
                 </ol>
             </li>
         </ol>
+        <div v-else class="noResult">
+            目前没有收支记录
+        </div>
     </Layout>
 </template>
 
@@ -48,11 +51,13 @@
         // eslint-disable-next-line getter-return
         get groupedList() {
             const {recordList} = this;
-            if (!recordList.length === 0) return [];
+            if (!recordList.length) return [];
 
             const newList = clone(recordList)
                 .filter(r => r.type === this.recordType)
                 .sort((a, b) => dayjs(b.createdAt).valueOf() - dayjs(a.createdAt).valueOf());
+
+            if (!newList.length) return [] as Result;
 
             type Result = {
                 title: string,
@@ -84,7 +89,7 @@
 
         // eslint-disable-next-line no-undef
         tagString(tags: Tag[]) {
-            return tags.length === 0 ? "无" : tags.join(",");
+            return tags.length === 0 ? "无" : tags.map(t => t.name).join("，");
         }
 
         beautify(string: string) {
@@ -148,5 +153,10 @@
         margin-right: auto;
         margin-left: 16px;
         color: #999;
+    }
+
+    .noResult {
+        padding: 32px;
+        text-align: center;
     }
 </style>

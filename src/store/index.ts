@@ -21,14 +21,19 @@ const store = new Vuex.Store({
         },
 
         createRecords(state, record: RecordItem) {
-            const newRecord: RecordItem = clone(record);
+            const newRecord = clone(record);
             newRecord.createdAt = new Date().toISOString();
             state.recordList?.push(newRecord);
             store.commit("saveRecords");
+            window.alert("已保存");
         },
 
         fetchTags(state) {
             state.tagList = JSON.parse(window.localStorage.getItem("tagList") || "[]");
+            if (!state.tagList.length) {
+                store.commit("createTag", "吃饭");
+                store.commit("createTag", "房租");
+            }
         },
 
         setCurrentTag(state, id: string) {
