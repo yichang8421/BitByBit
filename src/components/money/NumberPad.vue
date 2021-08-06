@@ -5,23 +5,23 @@
             <button @click="inputContent">1</button>
             <button @click="inputContent">2</button>
             <button @click="inputContent">3</button>
-            <button @click="add">+</button>
+            <button @click="inputContent">+</button>
             <button @click="remove">删除</button>
             <button @click="inputContent">4</button>
             <button @click="inputContent">5</button>
             <button @click="inputContent">6</button>
-            <button @click="minus">-</button>
+            <button @click="inputContent">-</button>
             <button @click="clear">AC</button>
             <button @click="inputContent">7</button>
             <button @click="inputContent">8</button>
             <button @click="inputContent">9</button>
-            <button @click="multiply">×</button>
+            <button @click="inputContent">×</button>
             <button @click="ok" class="ok">保存</button>
             <button @click="percent">%</button>
             <button @click="inputContent">0</button>
             <button @click="inputContent">.</button>
-            <button @click="division">÷</button>
-            <button @click="equal">=</button>
+            <button @click="inputContent">÷</button>
+            <button @click="calculate">=</button>
         </div>
     </div>
 </template>
@@ -35,29 +35,76 @@
         @Prop(Number) readonly value!: number;
         output = this.value.toString();
 
+        // eslint-disable-next-line no-undef
+        calcultorData: Data = {
+            isDecimalAdded: false,
+            isOperatorAdded: false,
+            isStarted: false
+        };
+
+        isOperator(character) {
+            return ["+", "-", "×", "÷"].indexOf(character) > -1;
+        }
+
         inputContent(event: MouseEvent) {
             const button = (event.target as HTMLButtonElement);
             const input = button.textContent!;
 
-            if (this.output.length === 16) {
+            // if (this.output.length === 16) {
+            //     return;
+            // }
+
+            if (this.output === "0" && !this.isOperator(input)) {
+                if (input === ".") {
+                    this.output += input;
+                    this.calcultorData.isDecimalAdded = true;
+                } else {
+                    this.output = input;
+                }
+
+                this.calcultorData.isStarted = true;
                 return;
             }
 
-            if (input != ".") {
-                if (this.output === "0") {
-                    this.output = input;
-                } else {
-                    this.output += input;
-                }
-            }
+            if (!this.isOperator(input)) {
+                if (input === "." && this.calcultorData.isDecimalAdded) {return;}
 
-            if (input === "." && this.output.indexOf(".") === -1) {
+                if (input === ".") {
+                    this.calcultorData.isDecimalAdded = true;
+                    this.calcultorData.isOperatorAdded = true;
+                } else {
+                    this.calcultorData.isOperatorAdded = false;
+                }
+
                 this.output += input;
             }
+
+            // 输入运算符号时
+            if (this.isOperator(input) && !this.calcultorData.isOperatorAdded) {
+                this.output += input;
+                this.calcultorData.isDecimalAdded = false;
+                this.calcultorData.isOperatorAdded = true;
+            }
+
+
+            // if (input != ".") {
+            //     if (this.output === "0") {
+            //         this.output = input;
+            //     } else {
+            //         this.output += input;
+            //     }
+            // }
+            //
+            // if (input === "." && this.output.indexOf(".") === -1) {
+            //     this.output += input;
+            // }
         }
 
         clear() {
             this.output = "0";
+            this.calcultorData.isDecimalAdded = false;
+            this.calcultorData.isOperatorAdded = false;
+            this.calcultorData.isStarted = false;
         }
 
         remove() {
@@ -73,24 +120,14 @@
             this.output = "0";
         }
 
-        add() {
-            return;
-        }
+        calculate() {
+            let result = this.output
+                .replace(new RegExp("×", "g"), "*")
+                .replace(new RegExp("÷", "g"), "/");
 
-        minus() {
-            return;
-        }
-
-        multiply() {
-            return;
-        }
-
-        division() {
-            return;
-        }
-
-        equal() {
-            return;
+            this.output = parseFloat(eval(result).toFixed((9))).toString();
+            this.calcultorData.isOperatorAdded = false;
+            this.calcultorData.isDecimalAdded = false;
         }
 
         percent() {
@@ -111,6 +148,9 @@
             font-family: Consolas monospace;
             padding: 18px 16px;
             text-align: right;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
         }
 
         > .button {
