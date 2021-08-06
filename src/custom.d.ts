@@ -6,13 +6,10 @@ type RecordItem = {
     createdAt?: string
 }
 
-type TagListModel = {
-    data: Tag[],
-    fetch: () => Tag[],
-    save: () => void,
-    create: (name: string) => "success" | "duplicated",
-    update: (id: string, name: string) => "success" | "not_found" | "duplicated",
-    remove: (id: string) => boolean,
+type Data = {
+    isDecimalAdded:boolean,
+    isOperatorAdded:boolean,
+    isStarted:b
 }
 
 type Tag = {
