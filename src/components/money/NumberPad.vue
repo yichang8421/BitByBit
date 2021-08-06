@@ -11,12 +11,12 @@
             <button @click="inputContent">5</button>
             <button @click="inputContent">6</button>
             <button @click="minus">-</button>
-            <button @click="clear">清空</button>
+            <button @click="clear">AC</button>
             <button @click="inputContent">7</button>
             <button @click="inputContent">8</button>
             <button @click="inputContent">9</button>
             <button @click="multiply">×</button>
-            <button @click="ok" class="ok">OK</button>
+            <button @click="ok" class="ok">保存</button>
             <button @click="percent">%</button>
             <button @click="inputContent">0</button>
             <button @click="inputContent">.</button>
@@ -122,6 +122,7 @@
                 float: left;
                 background: transparent;
                 border: none;
+                border-radius: 5px;
 
                 //&.ok {
                 //    height: 64px*2;
@@ -160,6 +161,11 @@
 
                 &:nth-child(20) {
                     background: darken($bg, 4%*7);
+                }
+
+                &:active {
+                    box-shadow: -4px -4px 10px -8px rgba(255, 255, 255, 1) inset,
+                    4px 4px 10px -8px rgba(0, 0, 0, 0.3) inset;
                 }
             }
         }

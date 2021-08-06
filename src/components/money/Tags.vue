@@ -73,6 +73,8 @@
 
                 &.selected {
                     background: darken($bg, 15%);
+                    box-shadow: -4px -4px 10px -8px rgba(255, 255, 255, 1) inset,
+                    4px 4px 10px -8px rgba(0, 0, 0, 0.3) inset;
                 }
             }
         }

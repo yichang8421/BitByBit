@@ -57,6 +57,7 @@
             justify-content: center;
             align-items: center;
             position: relative;
+            border-radius: 0px 0px 10px 10px;
 
             &.selected::after {
                 content: '';
@@ -66,6 +67,10 @@
                 width: 100%;
                 height: 4px;
                 background: #333;
+            }
+
+            &.selected {
+                box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.15);
             }
         }
     }
