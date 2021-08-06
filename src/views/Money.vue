@@ -72,10 +72,10 @@
         /*border: 1px solid red;*/
         display: flex;
         flex-direction: column-reverse;
-
     }
 
     .notes {
         padding: 12px 0;
     }
+
 </style>
