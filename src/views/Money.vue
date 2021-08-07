@@ -2,14 +2,14 @@
     <Layout class-prefix="layout">
         <NumberPad :value.sync="record.amount"
                    @submit="saveRecord"/>
-        <Tags :data-source.sync="tags"
-              @update:value="onUpdateTags"/>
         <div class="notes">
             <FormItem fiel-name="备注"
                       @update:value="onUpdateNotes"
                       :value.sync="record.notes"
                       placeholder="此处添加备注"/>
         </div>
+        <Tags :data-source.sync="tags"
+              @update:value="onUpdateTags"/>
         <Tabs :data-source="recrodTypeList"
               :value.sync="record.type"/>
     </Layout>

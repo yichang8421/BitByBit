@@ -42,7 +42,7 @@
             isStarted: false
         };
 
-        isOperator(character) {
+        isOperator(character: string) {
             return ["+", "-", "×", "÷"].indexOf(character) > -1;
         }
 
@@ -112,6 +112,7 @@
         }
 
         ok() {
+            this.calculate();
             //修改record.amount
             const number = parseFloat(this.output);
             this.$emit("update:value", number);
