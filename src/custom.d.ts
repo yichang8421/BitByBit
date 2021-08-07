@@ -7,9 +7,9 @@ type RecordItem = {
 }
 
 type Data = {
-    isDecimalAdded:boolean,
-    isOperatorAdded:boolean,
-    isStarted:b
+    isDecimalAdded: boolean,
+    isOperatorAdded: boolean,
+    isStarted: b
 }
 
 type Tag = {
@@ -20,7 +20,8 @@ type Tag = {
 type RootState = {
     recordList: RecordItem[],
     tagList: Tag[],
-    currentTag?: Tag
+    currentTag?: Tag,
+    createTagError?: Error | null
 }
 
 type DataSourceItem = { taxt: string, value: string }

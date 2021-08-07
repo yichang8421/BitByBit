@@ -9,7 +9,9 @@ const store = new Vuex.Store({
     state: {
         recordList: [],
         tagList: [],
-        currentTag: undefined
+        currentTag: undefined,
+        // tslint:disable-next-line:no-null-keyword
+        createTagError: null
     } as RootState,
     mutations: {
         fetchRecords(state) {
@@ -45,9 +47,12 @@ const store = new Vuex.Store({
         },
 
         createTag(state, name: string) {
+            // tslint:disable-next-line:no-null-keyword
+            state.createTagError = null;
             const names = state.tagList.map(item => item.name);
             if (names.indexOf(name) >= 0) {
-                window.alert("此标签名已添加");
+                state.createTagError = new Error("tag name duplicated");
+                return;
             } else {
                 const id = createId().toString();
                 state.tagList.push({id, name: name});
@@ -55,7 +60,6 @@ const store = new Vuex.Store({
             }
         },
 
-        // ???
         removeTag(state, id: string) {
             let index = -1;
             for (let i = 0; i < state.tagList.length; i++) {
