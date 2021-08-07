@@ -5,6 +5,7 @@ const path = require('path')
 // import svg_sprite_loader from "svg-sprite-loader/plugin";
 
 module.exports = {
+    publicPath: process.env.NODE_ENV === 'production' ? '/BitByBit-website/' : '/',
     lintOnSave: false,
     chainWebpack: config => {
         const dir = path.resolve(__dirname, 'src/assets/icons')
