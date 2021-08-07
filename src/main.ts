@@ -25,7 +25,7 @@ window.onload = function () {setTimeout(function () {window.scrollTo(0, 10000);}
 if (document.documentElement.clientWidth > 1024) {
     window.alert("请使用手机打开本页面，以保证浏览效果");
     const img = document.createElement("img");
-    img.src = "/qrcode.png";
+    img.src = "./qrcode.png";
     img.style.position = "fixed";
     img.style.left = "50%";
     img.style.top = "50%";

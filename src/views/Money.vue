@@ -8,6 +8,12 @@
                       :value.sync="record.notes"
                       placeholder="此处添加备注"/>
         </div>
+        <div class="notes">
+            <FormItem fiel-name="日期"
+                      :value.sync="record.createdAt"
+                      type="date"
+                      placeholder="此处添加日期"/>
+        </div>
         <Tags :data-source.sync="tags"
               @update:value="onUpdateTags"/>
         <Tabs :data-source="recrodTypeList"
@@ -45,7 +51,8 @@
             type: "-",
             notes: "",
             tags: [],
-            amount: 0
+            amount: 0,
+            createdAt: new Date().toISOString()
         };
 
         onUpdateNotes(value: string) {
