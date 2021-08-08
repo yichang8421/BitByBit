@@ -1,25 +1,21 @@
 <template>
     <Layout class="lay-wrapper">
-        <div class="content-wrapper">
-            <Tabs class="top-tabs" :data-source="recrodTypeList"
-                  :value.sync="record.type"/>
+        <Tabs :data-source="recrodTypeList"
+              :value.sync="record.type"/>
 
-            <div class="parts-wrapper">
-                <FormItem fiel-name="备注"
-                          @update:value="onUpdateNotes"
-                          :value.sync="record.notes"
-                          placeholder="此处添加备注"/>
-                <div class="notes">
-                    <FormItem fiel-name="日期"
-                              :value.sync="record.createdAt"
-                              type="date"
-                              placeholder="此处添加日期"/>
-                </div>
-                <div class="fillBlock">
-                    <Tags :data-source.sync="tags"
-                          @update:value="onUpdateTags"/>
-                </div>
+        <div class="parts-wrapper">
+            <FormItem fiel-name="备注"
+                      @update:value="onUpdateNotes"
+                      :value.sync="record.notes"
+                      placeholder="此处添加备注"/>
+            <div class="notes">
+                <FormItem fiel-name="日期"
+                          :value.sync="record.createdAt"
+                          type="date"
+                          placeholder="此处添加日期"/>
             </div>
+            <Tags :data-source.sync="tags"
+                  @update:value="onUpdateTags"/>
         </div>
         <NumberPad :value.sync="record.amount"
                    @submit="saveRecord"
@@ -101,29 +97,20 @@
 <style lang="scss" scoped>
     .lay-wrapper {
         position: relative;
-        width: 100%;
-        height: 100%;
+
+        .calculator {
+            position: absolute;
+            width: 100%;
+            bottom: 66px;
+        }
+
+        .parts-wrapper {
+            position: absolute;
+            top: 64px;
+            bottom: 382px;
+            overflow: auto;
+        }
     }
 
-    .calculator {
-        position: absolute;
-        bottom: 66px;
-        width: 100%;
-    }
 
-    .content-wrapper {
-        background: white;
-    }
-
-    .top-tabs {
-        top: 0;
-    }
-
-    .parts-wrapper {
-        overflow: auto;
-        position: absolute;
-        top: 64px;
-        bottom: 382px;
-        overflow-x: hidden !important;
-    }
 </style>
