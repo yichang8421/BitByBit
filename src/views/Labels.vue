@@ -1,5 +1,6 @@
 <template>
     <Layout>
+        <span class="labelPagTitle">收支明细</span>
         <div class="tags">
             <router-link class="tag"
                          v-for="tag in tags"
@@ -43,6 +44,15 @@
 </script>
 
 <style lang="scss" scoped>
+    .labelPagTitle {
+        font-size: 18px;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 32px;
+    }
+
     .tags {
         background: white;
         font-size: 16px;

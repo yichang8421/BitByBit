@@ -7,10 +7,8 @@
                     :class="{selected: selectedTags.indexOf(tag) >=0}"
                     @click="toggle(tag)">{{tag.name}}
                 </li>
+                <li @click="createTag">⊕</li>
             </ul>
-            <div class="new">
-                <button @click="createTag">新增标签</button>
-            </div>
         </div>
     </div>
 </template>
@@ -76,18 +74,6 @@
                     box-shadow: -4px -4px 10px -8px rgba(255, 255, 255, 1) inset,
                     4px 4px 10px -8px rgba(0, 0, 0, 0.3) inset;
                 }
-            }
-        }
-
-        > .new {
-            padding-top: 16px;
-
-            button {
-                background: transparent;
-                border: none;
-                color: #999;
-                border-bottom: 1px solid #999;
-                padding: 0 3px;
             }
         }
     }

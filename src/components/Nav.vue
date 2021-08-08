@@ -7,7 +7,7 @@
 
         <router-link to="/labels" class="item" active-class="selected">
             <Icon name="label"/>
-            标签
+            收支明细
         </router-link>
 
         <router-link to="/statistics" class="item" active-class="selected">
@@ -18,10 +18,11 @@
 </template>
 
 <script lang="ts">
+    import Vue from "vue";
 
-    export default {
-        name: "Nav"
-    };
+    export default class Nav extends Vue {
+
+    }
 </script>
 
 <style lang="scss" scoped>
@@ -49,7 +50,7 @@
 
         > .item.selected {
             color: $color-highlight;
-            box-shadow:inset 0 0 5px rgba(0,0,0,0.15);
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.15);
         }
     }
 

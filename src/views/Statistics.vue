@@ -1,6 +1,7 @@
 <template>
     <Layout>
         <Tabs class-prefix="recordTypeList" :data-source="recordTypeList" :value.sync="recordType"/>
+        <Chart/>
         <!--        <Tabs class-prefix="intervalList" :data-source="intervalList" :value.sync="interval" height="48px"/>-->
 
         <ol v-if="groupedList.length>0">
@@ -29,9 +30,11 @@
     import recordTypeList from "@/constants/recordTypeList";
     import dayjs from "dayjs";
     import clone from "@/lib/clone";
+    import Chart from "@/components/Chart.vue";
+
 
     @Component({
-        components: {Tabs}
+        components: {Tabs, Chart}
     })
     export default class Statistics extends Vue {
         created() {
@@ -46,6 +49,10 @@
         get recordList() {
             // eslint-disable-next-line no-undef
             return (this.$store.state as RootState).recordList;
+        }
+
+        get x(){
+            return 0;
         }
 
         // eslint-disable-next-line getter-return
@@ -158,5 +165,10 @@
     .noResult {
         padding: 32px;
         text-align: center;
+    }
+
+    .echarts {
+        width: 100%;
+        height: 100%;
     }
 </style>

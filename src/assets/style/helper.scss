@@ -10,7 +10,7 @@ $color-highlight: gray;
 %clearFix {
   &::after {
     content: '';
-    claer: both;
+    clear: both;
     display: block;
   }
 }

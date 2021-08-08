@@ -164,6 +164,7 @@
                 background: transparent;
                 border: none;
                 border-radius: 5px;
+                display: block;
 
                 //&.ok {
                 //    height: 64px*2;
