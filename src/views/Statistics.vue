@@ -1,7 +1,9 @@
 <template>
     <Layout>
         <Tabs class-prefix="recordTypeList" :data-source="recordTypeList" :value.sync="recordType"/>
-        <Chart :options="x"/>
+        <div class="chart-wrapper" ref="chartWrapper">
+            <Chart class="chart" :options="x"/>
+        </div>
         <!--        <Tabs class-prefix="intervalList" :data-source="intervalList" :value.sync="interval" height="48px"/>-->
 
         <ol v-if="groupedList.length>0">
@@ -40,6 +42,10 @@
             this.$store.commit("fetchRecords");
         }
 
+        mounted() {
+            (this.$refs.chartWrapper as HTMLDivElement).scrollLeft = 9999;
+        }
+
         // interval = "day";
         recordType = "-";
         // intervalList = intervalList;
@@ -52,6 +58,12 @@
 
         get x() {
             return {
+                grid: {
+                    left: 0,
+                    // top: 0,
+                    right: 0,
+                    // bottom: 0
+                },
                 xAxis: {
                     type: "category",
                     data: [
@@ -59,12 +71,29 @@
                         "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun",
                         "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun",
                         "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"
-                    ]
+                    ],
+                    axisTick: {
+                        show: true,
+                        alignWithLabel: true
+                    },
+                    axisLine: {
+                        lineStyle: {
+                            color: "#666"
+                        }
+                    }
                 },
                 yAxis: {
-                    type: "value"
+                    type: "value",
+                    show: false
                 },
                 series: [{
+                    symbol: "circle",
+                    symbolSize: 12,
+                    itemStyle: {
+                        borderWidth: 1,
+                        color: "#666",
+                        borderColor: "red"
+                    },
                     data: [
                         150, 230, 224, 218, 135, 147, 260,
                         150, 230, 224, 218, 135, 147, 260,
@@ -74,7 +103,10 @@
                     type: "line"
                 }],
                 tooltip: {
-                    show: true
+                    show: true,
+                    triggerOn: "click",
+                    formatter: "{c}",
+                    position: "top"
                 }
             };
         }
@@ -146,11 +178,6 @@
 </script>
 
 <style lang="scss" scoped>
-    .echarts {
-        max-width: 100%;
-        height: 400px;
-    }
-
     ::v-deep {
         .recordTypeList-tabs-item {
             background: #c4c4c4;
@@ -195,5 +222,18 @@
     .noResult {
         padding: 32px;
         text-align: center;
+    }
+
+    .chart {
+        width: 400%;
+
+        &-wrapper {
+            overflow: auto;
+            @media (max-width: 800px) {
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+            }
+        }
     }
 </style>
