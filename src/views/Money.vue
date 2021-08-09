@@ -106,6 +106,7 @@
 
         .parts-wrapper {
             position: absolute;
+            width: 100%;
             top: 64px;
             bottom: 382px;
             overflow: auto;

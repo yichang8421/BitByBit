@@ -152,6 +152,7 @@
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
+            background: white;
         }
 
         > .button {

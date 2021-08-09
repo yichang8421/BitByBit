@@ -50,7 +50,6 @@
     .tags {
         font-size: 14px;
         padding: 16px;
-        background: white;
 
         > .current {
             display: flex;

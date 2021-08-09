@@ -1,7 +1,7 @@
 <template>
     <Layout>
         <Tabs class-prefix="recordTypeList" :data-source="recordTypeList" :value.sync="recordType"/>
-        <Chart/>
+        <Chart :options="x"/>
         <!--        <Tabs class-prefix="intervalList" :data-source="intervalList" :value.sync="interval" height="48px"/>-->
 
         <ol v-if="groupedList.length>0">
@@ -32,7 +32,6 @@
     import clone from "@/lib/clone";
     import Chart from "@/components/Chart.vue";
 
-
     @Component({
         components: {Tabs, Chart}
     })
@@ -51,9 +50,35 @@
             return (this.$store.state as RootState).recordList;
         }
 
-        get x(){
-            return 0;
+        get x() {
+            return {
+                xAxis: {
+                    type: "category",
+                    data: [
+                        "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun",
+                        "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun",
+                        "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun",
+                        "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"
+                    ]
+                },
+                yAxis: {
+                    type: "value"
+                },
+                series: [{
+                    data: [
+                        150, 230, 224, 218, 135, 147, 260,
+                        150, 230, 224, 218, 135, 147, 260,
+                        150, 230, 224, 218, 135, 147, 260,
+                        150, 230, 224, 218, 135, 147, 260
+                    ],
+                    type: "line"
+                }],
+                tooltip: {
+                    show: true
+                }
+            };
         }
+
 
         // eslint-disable-next-line getter-return
         get groupedList() {
@@ -121,6 +146,11 @@
 </script>
 
 <style lang="scss" scoped>
+    .echarts {
+        max-width: 100%;
+        height: 400px;
+    }
+
     ::v-deep {
         .recordTypeList-tabs-item {
             background: #c4c4c4;
@@ -165,10 +195,5 @@
     .noResult {
         padding: 32px;
         text-align: center;
-    }
-
-    .echarts {
-        width: 100%;
-        height: 100%;
     }
 </style>

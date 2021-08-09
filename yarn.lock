@@ -1217,7 +1217,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/echarts@^4.9.9":
+"@types/echarts@^4.6.3":
   version "4.9.9"
   resolved "https://registry.nlark.com/@types/echarts/download/@types/echarts-4.9.9.tgz#9c203acc5f700fe46fcf6bc1ec748fcb128d8ed0"
   integrity sha1-nCA6zF9wD+Rvz2vB7HSPyxKNjtA=
@@ -4184,12 +4184,12 @@ ecc-jsbn@~0.1.1:
     jsbn "~0.1.0"
     safer-buffer "^2.1.0"
 
-echarts@4.8.0:
-  version "4.8.0"
-  resolved "https://registry.nlark.com/echarts/download/echarts-4.8.0.tgz?cache=0&sync_timestamp=1623167264935&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fecharts%2Fdownload%2Fecharts-4.8.0.tgz#b2c1cfb9229b13d368ee104fc8eea600b574d4c4"
-  integrity sha1-ssHPuSKbE9No7hBPyO6mALV01MQ=
+echarts@^4.8.0:
+  version "4.9.0"
+  resolved "https://registry.nlark.com/echarts/download/echarts-4.9.0.tgz?cache=0&sync_timestamp=1623167264935&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fecharts%2Fdownload%2Fecharts-4.9.0.tgz#a9b9baa03f03a2a731e6340c55befb57a9e1347d"
+  integrity sha1-qbm6oD8Doqcx5jQMVb77V6nhNH0=
   dependencies:
-    zrender "4.3.1"
+    zrender "4.3.2"
 
 editorconfig@^0.15.3:
   version "0.15.3"
@@ -9183,11 +9183,6 @@ requires-port@^1.0.0:
   resolved "https://registry.nlark.com/requires-port/download/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
   integrity sha1-kl0mAdOaxIXgkc8NpcbmlNw9yv8=
 
-resize-detector@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.nlark.com/resize-detector/download/resize-detector-0.3.0.tgz#fe495112e184695500a8f51e0389f15774cb1cfc"
-  integrity sha1-/klREuGEaVUAqPUeA4nxV3TLHPw=
-
 resolve-cwd@^2.0.0:
   version "2.0.0"
   resolved "https://registry.nlark.com/resolve-cwd/download/resolve-cwd-2.0.0.tgz#00a9f7387556e27038eae232caa372a6a59b665a"
@@ -10834,19 +10829,6 @@ vue-class-component@^7.2.3:
   resolved "https://registry.npm.taobao.org/vue-class-component/download/vue-class-component-7.2.6.tgz#8471e037b8e4762f5a464686e19e5afc708502e4"
   integrity sha1-hHHgN7jkdi9aRkaG4Z5a/HCFAuQ=
 
-vue-demi@^0.11.2:
-  version "0.11.2"
-  resolved "https://registry.nlark.com/vue-demi/download/vue-demi-0.11.2.tgz#faa06da53887c493a695b997f4fcb4784a667990"
-  integrity sha1-+qBtpTiHxJOmlbmX9Py0eEpmeZA=
-
-vue-echarts@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.nlark.com/vue-echarts/download/vue-echarts-6.0.0.tgz#480263fc6ed2125b886bb1b7f05bf9273edee552"
-  integrity sha1-SAJj/G7SEluIa7G38Fv5Jz7e5VI=
-  dependencies:
-    resize-detector "^0.3.0"
-    vue-demi "^0.11.2"
-
 vue-eslint-parser@^7.0.0:
   version "7.9.0"
   resolved "https://registry.nlark.com/vue-eslint-parser/download/vue-eslint-parser-7.9.0.tgz#5eeedc71f22ebc7b18b957d1ab171acf29a41e64"
@@ -11539,7 +11521,7 @@ yorkie@^2.0.0:
     normalize-path "^1.0.0"
     strip-indent "^2.0.0"
 
-zrender@4.3.1:
-  version "4.3.1"
-  resolved "https://registry.nlark.com/zrender/download/zrender-4.3.1.tgz#baf8aa6dc8187a2f819692d7d5f9bedfa2b90fa3"
-  integrity sha1-uviqbcgYei+BlpLX1fm+36K5D6M=
+zrender@4.3.2:
+  version "4.3.2"
+  resolved "https://registry.nlark.com/zrender/download/zrender-4.3.2.tgz#ec7432f9415c82c73584b6b7b8c47e1b016209c6"
+  integrity sha1-7HQy+UFcgsc1hLa3uMR+GwFiCcY=

@@ -1,23 +1,29 @@
 <template>
-    <div class="wrapper"></div>
+    <div class="wrapper" ref="wrapper"></div>
 </template>
 
 <script lang="ts">
-    import Vue from "vue";
-    import {Component, Prop} from "vue-property-decorator";
-    import echarts from 'echarts';
+    import {Component, Prop, Vue} from "vue-property-decorator";
+    import echarts, {EChartOption} from "echarts";
 
     @Component
     export default class Chart extends Vue {
-        @Prop() options: any;
-        mounted(){
+        @Prop() options?: EChartOption;
+
+        mounted() {
+            if (!this.options) {
+                return console.log("option 为空");
+            }
             console.log(this.options);
+            const chart = echarts.init(this.$refs.wrapper as HTMLDivElement);
+            chart.setOption(this.options!);
         }
     }
 </script>
 
 <style lang="scss" scoped>
-    .wrapper{
+    .wrapper {
         height: 400px;
     }
 </style>
+
