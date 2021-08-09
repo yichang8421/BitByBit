@@ -108,6 +108,11 @@
                         lineStyle: {
                             color: "#666"
                         }
+                    },
+                    axisLabel: {
+                        formatter: function (value: string) {
+                            return value.substr(5);
+                        }
                     }
                 },
                 yAxis: {
