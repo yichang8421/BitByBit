@@ -37,6 +37,7 @@ const routes: RouteConfig[] = [
 ];
 
 const router = new VueRouter({
+    // 默认 hash 模式
     routes
 });
 
