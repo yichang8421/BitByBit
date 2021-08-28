@@ -126,8 +126,8 @@
                     symbolSize: 12,
                     itemStyle: {
                         borderWidth: 1,
-                        color: "#666",
-                        borderColor: "red"
+                        color: "#a0d468",
+                        borderColor: "orange"
                     },
                     data: values,
                     type: "line"
@@ -211,7 +211,7 @@
 
     ::v-deep {
         .recordTypeList-tabs-item {
-            background: #c4c4c4;
+            background: white;
 
             &.selected {
                 background: $selected;

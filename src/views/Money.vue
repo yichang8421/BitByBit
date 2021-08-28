@@ -1,8 +1,10 @@
 <template>
     <Layout class="lay-wrapper">
-        <Tabs :data-source="recrodTypeList"
-              :value.sync="record.type"/>
-
+        <Tabs
+                class-prefix="moneyTypeList"
+                :data-source="recrodTypeList"
+                :value.sync="record.type"
+        />
         <div class="parts-wrapper">
             <FormItem fiel-name="备注"
                       @update:value="onUpdateNotes"
@@ -95,6 +97,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @import "~@/assets/style/helper.scss";
+
     .lay-wrapper {
         position: relative;
 
@@ -111,6 +115,18 @@
             bottom: 382px;
             overflow: auto;
         }
+
+        ::v-deep {
+            .moneyTypeList-tabs-item {
+
+                &.selected {
+                    background: #ffe531;
+
+                    &::after {
+                        background: $selected;
+                    }
+                }
+            }}
     }
 
 
