@@ -7,7 +7,7 @@
 
         <router-link to="/labels" class="item" active-class="selected">
             <Icon name="label"/>
-            收支明细
+            标签
         </router-link>
 
         <router-link to="/statistics" class="item" active-class="selected">
