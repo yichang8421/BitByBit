@@ -1,6 +1,6 @@
 <template>
     <Layout>
-        <span class="labelPagTitle">收支明细</span>
+        <span class="labelPagTitle">编辑标签</span>
         <div class="tags">
             <router-link class="tag"
                          v-for="tag in tags"
