@@ -207,12 +207,14 @@
 </script>
 
 <style lang="scss" scoped>
+    @import "~@/assets/style/helper.scss";
+
     ::v-deep {
         .recordTypeList-tabs-item {
             background: #c4c4c4;
 
             &.selected {
-                background: white;
+                background: $selected;
 
                 &::after {
                     display: none;

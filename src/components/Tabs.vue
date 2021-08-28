@@ -42,8 +42,10 @@
 </script>
 
 <style lang="scss" scoped>
+    @import "~@/assets/style/helper.scss";
+
     .tabs {
-        background: #c4c4c4;
+        background: white;
         display: flex;
         text-align: center;
         font-size: 24px;
@@ -57,7 +59,8 @@
             justify-content: center;
             align-items: center;
             position: relative;
-            border-radius: 0px 0px 10px 10px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
 
             &.selected::after {
                 content: '';
@@ -66,7 +69,7 @@
                 left: 0;
                 width: 100%;
                 height: 4px;
-                background: #333;
+                background: $selected;
             }
 
             &.selected {

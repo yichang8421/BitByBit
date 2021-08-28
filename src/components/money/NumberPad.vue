@@ -164,7 +164,7 @@
                 float: left;
                 background: transparent;
                 border: none;
-                border-radius: 5px;
+                /*border-radius: 5px;*/
                 display: block;
 
                 //&.ok {
@@ -172,7 +172,7 @@
                 //    float: right;
                 //}
 
-                $bg: #f2f2f2;
+                $bg: #fff7c0;
 
                 &:nth-child(1) {
                     background: $bg;
@@ -198,7 +198,11 @@
                     background: darken($bg, 4%*5);
                 }
 
-                &:nth-child(15), &:nth-child(19) {
+                &:nth-child(15) {
+                    background: $selected;
+                }
+
+                &:nth-child(19) {
                     background: darken($bg, 4%*6);
                 }
 
@@ -211,6 +215,8 @@
                     4px 4px 10px -8px rgba(0, 0, 0, 0.3) inset;
                 }
             }
+
+
         }
     }
 </style>

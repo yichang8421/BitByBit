@@ -51,6 +51,7 @@
         > .item.selected {
             color: $color-highlight;
             box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.15);
+            background: $selected;
         }
     }
 
