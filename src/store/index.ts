@@ -34,7 +34,10 @@ const store = new Vuex.Store({
             state.tagList = JSON.parse(window.localStorage.getItem("tagList") || "[]");
             if (!state.tagList.length) {
                 store.commit("createTag", "吃饭");
-                store.commit("createTag", "房租");
+                store.commit("createTag", "购物");
+                store.commit("createTag", "旅行");
+                store.commit("createTag", "电影");
+                store.commit("createTag", "约会");
             }
         },
 
