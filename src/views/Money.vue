@@ -22,7 +22,6 @@
         <NumberPad :value.sync="record.amount"
                    @submit="saveRecord"
                    class="calculator"/>
-        {{$store.state.tagList}}
         <!--                <NumberPad :value.sync="record.amount"-->
         <!--                           @submit="saveRecord"/>-->
         <!--                <div class="notes">-->

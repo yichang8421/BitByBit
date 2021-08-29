@@ -4,20 +4,51 @@
         <button @click="showModal=true" class="add">添加</button>
         <div class="pop" v-if="showModal">
             <div class="prompt">
-                <input type="text" name="name" placeholder="标签名"/>
-                <button @click="showModal=false" class="btn">提交</button>
+                <div>请输入新增标签名：</div>
+                <div>
+                    <input
+                            type="text"
+                            :newName="newName"
+                            placeholder="此处输入标签名"
+                            @input="addNewName($event.target.value)"
+                    />
+                </div>
+                <div>
+                    <button
+                            @click="showModal=false;createTag();"
+                            class="btn"
+                    >提交
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <script lang="ts">
-    import Vue from 'vue';
-    import {Component} from 'vue-property-decorator';
+    import Vue from "vue";
+    import {Component, Prop} from "vue-property-decorator";
 
     @Component
     export default class MyPrompt extends Vue {
-        showModal= false
+        showModal = false;
+
+        // @Prop({default: ""})
+        // readonly newName!: string;
+        newName = "";
+
+        addNewName(value: string) {
+            this.newName = value;
+        }
+
+        createTag() {
+            if (this.newName) {
+                this.$store.commit("createTag", this.newName);
+            } else {
+                window.alert("标签名不能为空");
+            }
+        }
+
     }
 </script>
 
@@ -34,6 +65,7 @@
         height: 100%;
         z-index: 1
     }
+
     .pop {
         background-color: #fff;
         /*border: 1px solid red;*/
@@ -42,16 +74,31 @@
         top: 0;
         left: 0;
         width: 100%;
-        height:100%;
+        height: 100%;
         z-index: 2;
-        overflow:hidden;
-        > .prompt{
+        overflow: hidden;
+
+        > .prompt {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+
+            > input {
+                height: 40px;
+                flex-grow: 1;
+                /*background: transparent;*/
+                border-radius: 5px;
+                border: 1px solid #e5dfdf;
+                padding-right: 16px;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
         }
     }
+
     .btn {
         background-color: #fff;
         opacity: 1;
@@ -59,12 +106,13 @@
         border: 1px solid blue;
         padding: 4px 12px;
         margin-top: 1em;
-        margin-left: 16px;
+        margin-left: 8px;
     }
+
     .add {
         font-weight: bold;
         color: #97a5ff;
-        border:none;
+        border: none;
         background: #d9d9d9;
         border: none;
         height: 40px;
