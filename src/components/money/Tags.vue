@@ -48,7 +48,15 @@
             this.$emit("update:value", this.selectedTags);
         }
 
-        addNewName(value: string){
+        clearSelect() {
+            const index = this.selectedTags.length;
+            for (let i = 0; i <= index; i++) {
+                this.selectedTags.pop();
+            }
+            this.selectedTags = [];
+        }
+
+        addNewName(value: string) {
             this.newName = value;
         }
 
@@ -96,6 +104,7 @@
 
         }
     }
+
     .createTag {
         background: #767676;
         color: white;

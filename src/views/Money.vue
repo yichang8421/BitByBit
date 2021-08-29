@@ -17,7 +17,9 @@
                           placeholder="此处添加日期"/>
             </div>
             <Tags :data-source.sync="tags"
-                  @update:value="onUpdateTags"/>
+                  @update:value="onUpdateTags"
+                  ref="resetSelectTags"
+            />
         </div>
         <NumberPad :value.sync="record.amount"
                    @submit="saveRecord"
@@ -76,6 +78,7 @@
                 this.$store.commit("createRecords", this.record);
                 this.record.notes = "";
                 this.$refs.resetOutput.clear();
+                this.$refs.resetSelectTags.clearSelect();
             }
         }
 
