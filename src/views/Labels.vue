@@ -7,22 +7,15 @@
                          :key="tag.id"
                          :to="`/labels/edit/${tag.id}`">
                 <span>{{tag.name}}</span>
+                <Icon name="right"/>
             </router-link>
-
         </div>
         <div class="createTag-wrapper">
-            <!--            <Button class="createTag"-->
-            <!--                    @click="createTag">-->
-            <!--                &lt;!&ndash; Button使用单独封装的click事件，也可以使用.native修饰符使用原生click事件  &ndash;&gt;-->
-            <!--                新建标签-->
-            <!--            </Button>-->
-<!--            <div class="myPrompt-wrapper">-->
-                    <MyPrompt
-                            :newName="newName"
-                            @update:newName="addNewName"
-                            @submit:newName="createTag"
-                    />
-<!--            </div>-->
+            <MyPrompt
+                    :newName="newName"
+                    @update:newName="addNewName"
+                    @submit:newName="createTag"
+            />
         </div>
     </Layout>
 </template>
@@ -43,15 +36,12 @@
         get tags() {
             return this.$store.state["tagList"];
         }
-        get currentTag() {
-            return this.$store.state["currentTag"];
-        }
 
         beforeCreate() {
             this.$store.commit("fetchTags");
         }
 
-        addNewName(value: string){
+        addNewName(value: string) {
             this.newName = value;
         }
 
@@ -61,13 +51,6 @@
                 this.newName = "";
             } else {
                 window.alert("标签名不能为空");
-            }
-        }
-
-        removeTag() {
-            if (this.currentTag) {
-                this.$store.commit("removeTag");
-                // this.$router.back();
             }
         }
     }

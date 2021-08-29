@@ -52,8 +52,7 @@
 
         removeTag() {
             if (this.currentTag) {
-                this.$store.commit("removeTag");
-                // this.$router.back();
+                this.$store.commit('removeTag', this.currentTag.id);
             }
         }
 

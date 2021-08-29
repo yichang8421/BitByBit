@@ -7,15 +7,14 @@
                     :class="{selected: selectedTags.indexOf(tag) >=0}"
                     @click="toggle(tag)">{{tag.name}}
                 </li>
-                <li>
-                    <MyPrompt
-                            :newName="newName"
-                            @update:newName="addNewName"
-                            @submit:newName="createTag"
-                    />
-                </li>
-<!--                <li @click="createTag">⊕</li>-->
             </ul>
+        </div>
+        <div class="createTag-wrapper">
+            <MyPrompt
+                    :newName="newName"
+                    @update:newName="addNewName"
+                    @submit:newName="createTag"
+            />
         </div>
     </div>
 </template>
@@ -24,11 +23,9 @@
     import Vue from "vue";
     import {Component, Prop} from "vue-property-decorator";
     import {mixins} from "vue-class-component";
-    import TagHelper from "@/mixins/tagHelper";
-    // import store from "@/store";
 
     @Component
-    export default class Tags extends mixins(TagHelper) {
+    export default class Tags extends Vue {
         newName = "";
         @Prop(Array) readonly dataSource: string[] | undefined;
         selectedTags: string[] = [];
@@ -95,6 +92,23 @@
                     4px 4px 10px -8px rgba(0, 0, 0, 0.3) inset;
                 }
             }
+
+
+        }
+    }
+    .createTag {
+        background: #767676;
+        color: white;
+        border-radius: 4px;
+        border: none;
+        height: 40px;
+        padding: 0 16px;
+
+        &-wrapper {
+            width: 100%;
+            text-align: center;
+            padding: 16px;
+            margin-top: 44-16px;
         }
     }
 </style>
