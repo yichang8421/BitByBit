@@ -19,7 +19,7 @@
             </li>
         </ol>
         <div v-else class="noResult">
-            目前没有收支记录
+            目前没有记录，快快记一笔吧！
         </div>
     </Layout>
 </template>

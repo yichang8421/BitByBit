@@ -50,10 +50,6 @@
             const button = (event.target as HTMLButtonElement);
             const input = button.textContent!;
 
-            // if (this.output.length === 16) {
-            //     return;
-            // }
-
             if (this.output === "0" && !this.isOperator(input)) {
                 if (input === ".") {
                     this.output += input;
@@ -85,19 +81,6 @@
                 this.calcultorData.isDecimalAdded = false;
                 this.calcultorData.isOperatorAdded = true;
             }
-
-
-            // if (input != ".") {
-            //     if (this.output === "0") {
-            //         this.output = input;
-            //     } else {
-            //         this.output += input;
-            //     }
-            // }
-            //
-            // if (input === "." && this.output.indexOf(".") === -1) {
-            //     this.output += input;
-            // }
         }
 
         clear() {
@@ -118,7 +101,6 @@
             this.$emit("update:value", number);
             //提交record
             this.$emit("submit", number);
-            this.output = "0";
         }
 
         calculate() {

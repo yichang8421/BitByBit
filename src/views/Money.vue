@@ -21,25 +21,8 @@
         </div>
         <NumberPad :value.sync="record.amount"
                    @submit="saveRecord"
-                   class="calculator"/>
-        <!--                <NumberPad :value.sync="record.amount"-->
-        <!--                           @submit="saveRecord"/>-->
-        <!--                <div class="notes">-->
-        <!--                    <FormItem fiel-name="备注"-->
-        <!--                              @update:value="onUpdateNotes"-->
-        <!--                              :value.sync="record.notes"-->
-        <!--                              placeholder="此处添加备注"/>-->
-        <!--                </div>-->
-        <!--                <div class="notes">-->
-        <!--                    <FormItem fiel-name="日期"-->
-        <!--                              :value.sync="record.createdAt"-->
-        <!--                              type="date"-->
-        <!--                              placeholder="此处添加日期"/>-->
-        <!--                </div>-->
-        <!--                <Tags :data-source.sync="tags"-->
-        <!--                      @update:value="onUpdateTags"/>-->
-        <!--        <Tabs :data-source="recrodTypeList"-->
-        <!--              :value.sync="record.type"/>-->
+                   class="calculator"
+                   ref='resetOutput'/>
     </Layout>
 </template>
 
@@ -48,7 +31,7 @@
     import Tags from "@/components/money/Tags.vue";
     import FormItem from "@/components/FormItem.vue";
     import Vue from "vue";
-    import {Component, Watch} from "vue-property-decorator";
+    import {Component} from "vue-property-decorator";
     import recordTypeList from "@/constants/recordTypeList";
     import Tabs from "@/components/Tabs.vue";
 
@@ -88,11 +71,14 @@
 
         saveRecord() {
             if (!this.record.tags.length) {
-                return window.alert("请选择至少一个标签");
+                window.alert("要至少选择一个标签作为记录哦~");
+            } else {
+                this.$store.commit("createRecords", this.record);
+                this.record.notes = "";
+                this.$refs.resetOutput.clear();
             }
-            this.$store.commit("createRecords", this.record);
-            this.record.notes = "";
         }
+
     }
 </script>
 
@@ -126,7 +112,8 @@
                         background: $selected;
                     }
                 }
-            }}
+            }
+        }
     }
 
 
