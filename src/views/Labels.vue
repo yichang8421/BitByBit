@@ -11,11 +11,14 @@
             </router-link>
         </div>
         <div class="createTag-wrapper">
-            <Button class="createTag"
-                    @click="createTag">
-                <!-- Button使用单独封装的click事件，也可以使用.native修饰符使用原生click事件  -->
-                新建标签
-            </Button>
+            <!--            <Button class="createTag"-->
+            <!--                    @click="createTag">-->
+            <!--                &lt;!&ndash; Button使用单独封装的click事件，也可以使用.native修饰符使用原生click事件  &ndash;&gt;-->
+            <!--                新建标签-->
+            <!--            </Button>-->
+<!--            <div class="myPrompt-wrapper">-->
+                    <MyPrompt/>
+<!--            </div>-->
         </div>
     </Layout>
 </template>
@@ -87,7 +90,5 @@
             padding: 16px;
             margin-top: 44-16px;
         }
-
-
     }
 </style>

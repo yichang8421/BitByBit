@@ -1,12 +1,14 @@
 <template>
     <div>
         <div class="tags">
-            <MyPrompt @click="createTag"/>
             <ul class="current">
                 <li v-for="tag in dataSource"
                     :key="tag.id"
                     :class="{selected: selectedTags.indexOf(tag) >=0}"
                     @click="toggle(tag)">{{tag.name}}
+                </li>
+                <li>
+                    <MyPrompt @click="createTag"/>
                 </li>
 <!--                <li @click="createTag">⊕</li>-->
             </ul>
