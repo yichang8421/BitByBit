@@ -77,8 +77,8 @@
             } else {
                 this.$store.commit("createRecords", this.record);
                 this.record.notes = "";
-                this.$refs.resetOutput.clear();
-                this.$refs.resetSelectTags.clearSelect();
+                (this.$refs["resetOutput"]as any).clear();
+                (this.$refs["resetSelectTags"]as any).clearSelect();
             }
         }
 
