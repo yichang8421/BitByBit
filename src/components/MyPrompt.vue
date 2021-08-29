@@ -10,12 +10,12 @@
                             type="text"
                             :newName="newName"
                             placeholder="此处输入标签名"
-                            @input="newName=$event.target.value;"
+                            @input="onAddNewName($event.target.value)"
                     />
                 </div>
                 <div>
                     <button
-                            @click="showModal=false;createTag();"
+                            @click="showModal=false;onSubmit()"
                             class="btn"
                     >提交
                     </button>
@@ -32,17 +32,16 @@
     @Component
     export default class MyPrompt extends Vue {
         showModal = false;
-        newName = "";
+        @Prop({default: ""})
+        readonly newName!: string;
 
-        createTag() {
-            if (this.newName) {
-                this.$store.commit("createTag", this.newName);
-                this.newName = "";
-            } else {
-                window.alert("标签名不能为空");
-            }
+        onAddNewName(value:string){
+            this.$emit("update:newName",value);
         }
 
+        onSubmit(){
+            this.$emit("submit:newName");
+        }
     }
 </script>
 

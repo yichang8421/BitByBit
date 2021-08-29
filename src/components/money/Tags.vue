@@ -8,7 +8,11 @@
                     @click="toggle(tag)">{{tag.name}}
                 </li>
                 <li>
-                    <MyPrompt @click="createTag"/>
+                    <MyPrompt
+                            :newName="newName"
+                            @update:newName="addNewName"
+                            @submit:newName="createTag"
+                    />
                 </li>
 <!--                <li @click="createTag">⊕</li>-->
             </ul>
@@ -25,6 +29,7 @@
 
     @Component
     export default class Tags extends mixins(TagHelper) {
+        newName = "";
         @Prop(Array) readonly dataSource: string[] | undefined;
         selectedTags: string[] = [];
 
@@ -44,6 +49,19 @@
                 this.selectedTags.push(tag);
             }
             this.$emit("update:value", this.selectedTags);
+        }
+
+        addNewName(value: string){
+            this.newName = value;
+        }
+
+        createTag() {
+            if (this.newName) {
+                this.$store.commit("createTag", this.newName);
+                this.newName = "";
+            } else {
+                window.alert("标签名不能为空");
+            }
         }
     }
 

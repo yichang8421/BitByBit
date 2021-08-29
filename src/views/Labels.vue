@@ -1,14 +1,14 @@
 <template>
     <Layout>
-        <span class="labelPagTitle">编辑标签</span>
+        <span class="labelPagTitle">标 签</span>
         <div class="tags">
             <router-link class="tag"
                          v-for="tag in tags"
                          :key="tag.id"
                          :to="`/labels/edit/${tag.id}`">
                 <span>{{tag.name}}</span>
-                <Icon name="right"/>
             </router-link>
+
         </div>
         <div class="createTag-wrapper">
             <!--            <Button class="createTag"-->
@@ -17,7 +17,11 @@
             <!--                新建标签-->
             <!--            </Button>-->
 <!--            <div class="myPrompt-wrapper">-->
-                    <MyPrompt/>
+                    <MyPrompt
+                            :newName="newName"
+                            @update:newName="addNewName"
+                            @submit:newName="createTag"
+                    />
 <!--            </div>-->
         </div>
     </Layout>
@@ -39,9 +43,32 @@
         get tags() {
             return this.$store.state["tagList"];
         }
+        get currentTag() {
+            return this.$store.state["currentTag"];
+        }
 
         beforeCreate() {
             this.$store.commit("fetchTags");
+        }
+
+        addNewName(value: string){
+            this.newName = value;
+        }
+
+        createTag() {
+            if (this.newName) {
+                this.$store.commit("createTag", this.newName);
+                this.newName = "";
+            } else {
+                window.alert("标签名不能为空");
+            }
+        }
+
+        removeTag() {
+            if (this.currentTag) {
+                this.$store.commit("removeTag");
+                // this.$router.back();
+            }
         }
     }
 </script>
